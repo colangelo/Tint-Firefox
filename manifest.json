@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Colorful Windows Enhanced",
   "version": "4.4",
-  "description": "Dynamic colorful firefox windows with custom color picker",
-  "homepage_url": "https://github.com/DaveDuck321/Colorful-window-theme",
+  "description": "Dynamic colorful firefox windows with custom color picker and expanded color palette.",
+  "homepage_url": "https://github.com/casomai/Colorful-Windows-Enhanced",
   "icons": {
     "48": "icon.png",
     "128": "icon.png"

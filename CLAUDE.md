@@ -21,23 +21,27 @@ The extension consists of:
 ### Core Components
 
 **ThemeManager class** (`background.js:7-83`):
+
 - Manages theme distribution and custom color storage
 - Tracks theme usage with least-used selection algorithm
 - Handles automatic contrast calculation for custom colors
 - Maintains separate maps for window themes and custom colors
 
 **Theme Management**:
+
 - `DEFAULT_THEMES`: Array of 32 carefully curated color themes for automatic assignment
 - `windowThemes`: Map tracking automatic theme assignments
 - `customColors`: Map storing per-window custom color preferences
 
 **Core Functions**:
+
 - `getNextTheme()`: O(n) selection of least-used theme
 - `applyTheme(windowId, customColor)`: Applies theme with optional custom color
 - `calculateContrastColor()`: Determines optimal text color for readability
 - `freeTheme()`: Cleans up theme assignments when windows close
 
 **Color Picker Interface**:
+
 - 72 preset colors organized by color families (reds, oranges, yellows, greens, blues, purples, grays)
 - Custom color picker with hex input validation
 - Scrollable grid layout with 12-column responsive design
@@ -45,6 +49,7 @@ The extension consists of:
 - Real-time color preview and application
 
 **Advanced Color Science (v4.0)**:
+
 - **ColorUtils class**: Comprehensive color manipulation utilities
 - **Color harmony generation**: Complementary, triadic, analogous, and monochromatic schemes
 - **HSL/RGB conversion**: Optimized algorithms for color space transformations
@@ -53,6 +58,7 @@ The extension consists of:
 - **Interactive color theory**: Real-time harmony updates and selection
 
 **Event Listeners**:
+
 - Window creation/removal for automatic theming
 - Browser action click for color picker access
 - Message passing for UI-background communication
@@ -71,24 +77,29 @@ The extension has been optimized with several performance improvements:
 - **Better cache locality**: Direct array access instead of object property lookups
 
 ### Testing the Extension
+
 1. Open Firefox and navigate to `about:debugging`
 2. Click "This Firefox" → "Load Temporary Add-on"
 3. Select the `manifest.json` file from this directory
 4. Open new windows to see different color themes applied
 
 ### Performance Testing
+
 To verify performance improvements:
+
 1. Open Firefox DevTools (F12)
 2. Go to Performance tab
 3. Start recording before opening multiple windows
 4. Compare with previous version metrics
 
 ### Key Extension Permissions
+
 - `tabs`: Access to browser tabs API for window management
 - `theme`: Ability to modify browser theme colors per window
 - `storage`: Local storage for custom color persistence
 
 ### New Features in v4.x
+
 - **Color harmony generation**: Interactive buttons for complementary, triadic, analogous, and monochromatic schemes
 - **Smart palette generation**: Create harmonious color palettes from any base color
 - **Advanced color science**: HSL/RGB conversion utilities and color theory algorithms
@@ -96,27 +107,33 @@ To verify performance improvements:
 - **Enhanced contrast calculation**: WCAG-inspired text color optimization
 
 ### Improvements in v4.1
+
 - **Preserved original palette**: Generated palettes appear in separate section, maintaining access to 72 original colors
 - **Better UX organization**: Clear separation between preset colors, generated palettes, and harmony tools
 - **Enhanced usability**: Clear button to hide generated palette when not needed
 
 ### Improvements in v4.2
+
 - **Expanded automatic theming**: Automatic window colors now use 21 curated colors (3x more variety)
 - **Better color distribution**: More diverse themes across reds, oranges, yellows, greens, blues, purples, and grays
 - **Maintained compatibility**: Original 7 colors preserved as first colors in expanded palette
 
 ### Improvements in v4.3
+
 - **32 automatic themes**: Further expanded to 32 colors for maximum window differentiation
 - **Optimized for heavy users**: Perfect for users who open many windows simultaneously
 - **Enhanced color variety**: Includes both vibrant and pastel variants for better visual harmony
 - **Improved spectrum coverage**: Better distribution across the entire color spectrum
 
 ### Improvements in v4.4
+
 - **Smart tab management**: Browser action now focuses existing color picker tabs instead of creating duplicates
 - **Enhanced UX**: Prevents tab clutter and provides more intuitive behavior
 - **Window-scoped logic**: Only checks for existing color picker tabs within the same window
+- **Fix for location bar coloring**
 
 ### Features from v3.x
+
 - **Toolbar button**: Click to open color picker interface
 - **Custom colors**: Choose any color for individual windows
 - **Color persistence**: Custom colors saved and restored

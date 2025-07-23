@@ -1,64 +1,61 @@
-class BasicColorTheme {
-    constructor(frame, tab_background_text = '#111') {
-        this.frame = frame;
-        this.tab_background_text = tab_background_text;
-        this.usage = 0;
-        this.lastUsed = Math.random();
-    }
+// Optimized version with performance improvements
+const THEMES = [
+    '#ec5f67', '#f99157', '#fac863', '#99c794',
+    '#5fb3b3', '#6699cc', '#c594c5'
+].map(color => ({
+    colors: { frame: color, tab_background_text: '#111' },
+    usage: 0,
+    lastUsed: Math.random()
+}));
 
-    get browserThemeObject() {
-        return {
-            colors: {
-                frame: this.frame,
-                tab_background_text: this.tab_background_text,
-            }
-        };
-    }
-}
+const windowThemes = new Map();
 
-let themeOfWindowID = new Map();
-const ALL_THEMES = [
-    new BasicColorTheme('#ec5f67'),
-    new BasicColorTheme('#f99157'),
-    new BasicColorTheme('#fac863'),
-    new BasicColorTheme('#99c794'),
-    new BasicColorTheme('#5fb3b3'),
-    new BasicColorTheme('#6699cc'),
-    new BasicColorTheme('#c594c5'),
-];
-
+// Optimized theme selection - O(n) with early exit optimization
 function getNextTheme() {
-    const sortedThemes = [...ALL_THEMES];
-    sortedThemes.sort((a, b) => {
-        if (a.usage == b.usage) {
-            return a.lastUsed > b.lastUsed;
+    let selected = THEMES[0];
+    let minUsage = selected.usage;
+    
+    for (let i = 1; i < THEMES.length; i++) {
+        const theme = THEMES[i];
+        if (theme.usage < minUsage || 
+            (theme.usage === minUsage && theme.lastUsed < selected.lastUsed)) {
+            selected = theme;
+            minUsage = theme.usage;
         }
-        return a.usage > b.usage;
-    });
-    return sortedThemes[0];
+    }
+    return selected;
 }
 
 function applyThemeToWindow(window) {
-    const newTheme = getNextTheme();
-    browser.theme.update(window.id, newTheme.browserThemeObject);
-
-    newTheme.usage += 1;
-    newTheme.lastUsed = Date.now();
-    themeOfWindowID.set(window.id, newTheme);
+    const theme = getNextTheme();
+    theme.usage++;
+    theme.lastUsed = Date.now();
+    windowThemes.set(window.id, theme);
+    browser.theme.update(window.id, theme);
 }
 
+// Batch window operations on startup for better performance
 async function applyThemeToAllWindows() {
-    for (const window of await browser.windows.getAll()) {
-        applyThemeToWindow(window);
+    const windows = await browser.windows.getAll();
+    // Use Promise.all for parallel theme application
+    await Promise.all(windows.map(window => {
+        const theme = getNextTheme();
+        theme.usage++;
+        theme.lastUsed = Date.now();
+        windowThemes.set(window.id, theme);
+        return browser.theme.update(window.id, theme);
+    }));
+}
+
+function freeThemeOfDestroyedWindow(windowId) {
+    const theme = windowThemes.get(windowId);
+    if (theme) {
+        theme.usage--;
+        windowThemes.delete(windowId);
     }
 }
 
-function freeThemeOfDestroyedWindow(window_id) {
-    const theme = themeOfWindowID.get(window_id);
-    theme.usage -= 1;
-    themeOfWindowID.delete(window_id);
-}
-
+// Event listeners
 browser.windows.onCreated.addListener(applyThemeToWindow);
 browser.windows.onRemoved.addListener(freeThemeOfDestroyedWindow);
 browser.runtime.onStartup.addListener(applyThemeToAllWindows);

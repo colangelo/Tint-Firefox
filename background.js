@@ -73,7 +73,15 @@ class ThemeManager {
     }
 
     hexToRgb(hex) {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        // Remove # if present
+        hex = hex.replace('#', '');
+        
+        // Expand shorthand hex (e.g., "ddd" to "dddddd")
+        if (hex.length === 3) {
+            hex = hex.split('').map(char => char + char).join('');
+        }
+        
+        const result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
             r: parseInt(result[1], 16),
             g: parseInt(result[2], 16),

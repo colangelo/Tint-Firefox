@@ -111,6 +111,11 @@ To verify performance improvements:
 - **Enhanced color variety**: Includes both vibrant and pastel variants for better visual harmony
 - **Improved spectrum coverage**: Better distribution across the entire color spectrum
 
+### Improvements in v4.4
+- **Smart tab management**: Browser action now focuses existing color picker tabs instead of creating duplicates
+- **Enhanced UX**: Prevents tab clutter and provides more intuitive behavior
+- **Window-scoped logic**: Only checks for existing color picker tabs within the same window
+
 ### Features from v3.x
 - **Toolbar button**: Click to open color picker interface
 - **Custom colors**: Choose any color for individual windows

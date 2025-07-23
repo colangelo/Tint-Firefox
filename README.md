@@ -56,6 +56,12 @@ Each new window opens with a different theme (much colorfulness).
 - **Pastel color integration**: Added beautiful pastel variants alongside vibrant colors
 - **Improved color harmony**: Colors selected to work well together across the spectrum
 
+### Improvements in v4.4
+
+- **Smart tab management**: Clicking the extension button now focuses existing color picker tabs instead of creating duplicates
+- **Cleaner interface**: Prevents color picker tab clutter for better user experience
+- **Window-specific behavior**: Only checks for existing tabs within the same window
+
 ## Performance
 
 ### v4.0 Enhancements

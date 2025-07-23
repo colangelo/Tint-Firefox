@@ -14,9 +14,9 @@ Each new window opens with a different theme (much colorfulness).
 
 ### Core Features
 
-- **21 unique automatic themes**: Expanded palette with reds, oranges, yellows, greens, blues, purples, and grays
+- **32 unique automatic themes**: Expanded palette with vibrant and pastel reds, oranges, yellows, greens, blues, purples, and corals
 - **Smart distribution**: Ensures colors are evenly distributed across windows
-- **Automatic theming**: New windows get themed instantly with much more variety
+- **Automatic theming**: New windows get themed instantly with excellent variety for differentiating many windows
 - **Memory efficient**: Lightweight with optimized performance
 - **Clean uninstall**: Themes reset when extension is removed
 
@@ -48,6 +48,13 @@ Each new window opens with a different theme (much colorfulness).
 - **Expanded automatic theming**: Automatic window colors now chosen from 21 carefully curated colors (3x more variety!)
 - **Better color distribution**: More diverse automatic themes with reds, oranges, yellows, greens, blues, purples, and grays
 - **Maintained compatibility**: Original 7 colors are preserved as the first colors in the expanded palette
+
+### Improvements in v4.3
+
+- **32 automatic themes**: Further expanded from 21 to 32 colors for maximum window differentiation
+- **Enhanced for many windows**: Perfect for users who open many windows simultaneously
+- **Pastel color integration**: Added beautiful pastel variants alongside vibrant colors
+- **Improved color harmony**: Colors selected to work well together across the spectrum
 
 ## Performance
 
@@ -89,8 +96,8 @@ No build process required - edit files directly and reload the extension in `abo
 
 ### Automatic Mode (Default)
 
-- Each new window automatically gets a unique color from the 21-color curated palette
-- Colors are distributed evenly to ensure variety with much more visual diversity
+- Each new window automatically gets a unique color from the 32-color curated palette
+- Colors are distributed evenly to ensure maximum variety and excellent visual differentiation for many windows
 
 ### Custom Color Mode (v3.x+)
 

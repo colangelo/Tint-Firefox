@@ -4,24 +4,26 @@ const DEFAULT_THEMES = [
     '#ec5f67', '#f99157', '#fac863', '#99c794',
     '#5fb3b3', '#6699cc', '#c594c5',
     
-    // Expanded palette - carefully selected for good contrast and variety
-    // Additional reds/pinks
-    '#ff4757', '#ff6b9d', '#e55039',
+    // Expanded palette - 25 additional colors for 32 total (maximum window differentiation)
+    // Vibrant reds and pinks (4)
+    '#ff4757', '#ff6b9d', '#e55039', '#ff7675',
     
-    // Additional oranges/yellows
-    '#ffa502', '#ffdd59', '#feca57',
+    // Oranges and corals (3)  
+    '#ffa502', '#ff7f50', '#feca57',
     
-    // Additional greens
-    '#32ff7e', '#2ed573', '#20bf6b',
+    // Yellows and golds (3)
+    '#ffdd59', '#f1c40f', '#fffa65',
     
-    // Additional blues/cyans
-    '#70a1ff', '#0abde3', '#74b9ff',
+    // Greens - vibrant to pastel (6)
+    '#32ff7e', '#2ed573', '#20bf6b', '#81ecec',
+    '#00b894', '#26de81',
     
-    // Additional purples/magentas
-    '#a55eea', '#8c7ae6', '#fd79a8',
+    // Blues and cyans (5)
+    '#70a1ff', '#0abde3', '#74b9ff', '#00cec9',
+    '#0984e3',
     
-    // Grays for variety
-    '#57606f', '#95a5a6', '#636e72'
+    // Purples and magentas (4)
+    '#a55eea', '#8c7ae6', '#fd79a8', '#e84393'
 ];
 
 class ThemeManager {

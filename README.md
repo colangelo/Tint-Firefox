@@ -14,9 +14,9 @@ Each new window opens with a different theme (much colorfulness).
 
 ### Core Features
 
-- **7 unique color themes**: Red, orange, yellow, green, cyan, blue, purple
+- **21 unique automatic themes**: Expanded palette with reds, oranges, yellows, greens, blues, purples, and grays
 - **Smart distribution**: Ensures colors are evenly distributed across windows
-- **Automatic theming**: New windows get themed instantly
+- **Automatic theming**: New windows get themed instantly with much more variety
 - **Memory efficient**: Lightweight with optimized performance
 - **Clean uninstall**: Themes reset when extension is removed
 
@@ -42,6 +42,12 @@ Each new window opens with a different theme (much colorfulness).
 - **Preserved original palette**: Generated palettes now appear in a separate section, keeping the full 72-color palette intact
 - **Clear generated palette**: Easy-to-use button to hide generated palette when not needed
 - **Better organization**: Clean separation between original colors, generated palettes, and color harmony tools
+
+### Improvements in v4.2
+
+- **Expanded automatic theming**: Automatic window colors now chosen from 21 carefully curated colors (3x more variety!)
+- **Better color distribution**: More diverse automatic themes with reds, oranges, yellows, greens, blues, purples, and grays
+- **Maintained compatibility**: Original 7 colors are preserved as the first colors in the expanded palette
 
 ## Performance
 
@@ -83,8 +89,8 @@ No build process required - edit files directly and reload the extension in `abo
 
 ### Automatic Mode (Default)
 
-- Each new window automatically gets a unique color from the 7-color palette
-- Colors are distributed evenly to ensure variety
+- Each new window automatically gets a unique color from the 21-color curated palette
+- Colors are distributed evenly to ensure variety with much more visual diversity
 
 ### Custom Color Mode (v3.x+)
 

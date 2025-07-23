@@ -27,7 +27,7 @@ The extension consists of:
 - Maintains separate maps for window themes and custom colors
 
 **Theme Management**:
-- `DEFAULT_THEMES`: Array of 7 predefined color themes
+- `DEFAULT_THEMES`: Array of 21 carefully curated color themes for automatic assignment
 - `windowThemes`: Map tracking automatic theme assignments
 - `customColors`: Map storing per-window custom color preferences
 
@@ -99,6 +99,11 @@ To verify performance improvements:
 - **Preserved original palette**: Generated palettes appear in separate section, maintaining access to 72 original colors
 - **Better UX organization**: Clear separation between preset colors, generated palettes, and harmony tools
 - **Enhanced usability**: Clear button to hide generated palette when not needed
+
+### Improvements in v4.2
+- **Expanded automatic theming**: Automatic window colors now use 21 curated colors (3x more variety)
+- **Better color distribution**: More diverse themes across reds, oranges, yellows, greens, blues, purples, and grays
+- **Maintained compatibility**: Original 7 colors preserved as first colors in expanded palette
 
 ### Features from v3.x
 - **Toolbar button**: Click to open color picker interface

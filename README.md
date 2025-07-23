@@ -29,13 +29,19 @@ Each new window opens with a different theme (much colorfulness).
 - **One-click toolbar button**: Easy access to color picker
 - **Auto contrast**: Smart text color calculation for optimal readability
 
-### New in v4.0: Advanced Color Science
+### New in v4.x: Advanced Color Science
 
 - **Color harmony generator**: Create complementary, triadic, analogous, and monochromatic color schemes
-- **Smart palette generation**: Generate harmonious color palettes from any base color
+- **Smart palette generation**: Generate harmonious color palettes from any base color (preserves original palette)
 - **Enhanced contrast calculation**: WCAG-inspired text color optimization for better readability
 - **Interactive color theory**: Click harmony buttons to explore color relationships
 - **Dynamic palette updates**: Real-time harmony updates as you adjust colors
+
+### Improvements in v4.1
+
+- **Preserved original palette**: Generated palettes now appear in a separate section, keeping the full 72-color palette intact
+- **Clear generated palette**: Easy-to-use button to hide generated palette when not needed
+- **Better organization**: Clean separation between original colors, generated palettes, and color harmony tools
 
 ## Performance
 
@@ -87,12 +93,14 @@ No build process required - edit files directly and reload the extension in `abo
 3. Click "Apply Color" to theme the current window
 4. Use "Reset to Auto" to return to automatic color assignment
 
-### Advanced Color Features (v4.0+)
+### Advanced Color Features (v4.x+)
 
 1. **Color Harmony**: Click harmony buttons (Complementary, Triadic, Analogous, Monochromatic) to generate color schemes
-2. **Palette Generation**: Click "Generate Palette" to create a custom color palette from your selected color
-3. **Interactive Color Theory**: Select any harmony color to use it as your window theme
+2. **Palette Generation**: Click "Generate Palette" to create a custom 16-color palette from your selected color
+3. **Interactive Color Theory**: Select any harmony color or generated palette color to use as your window theme
 4. **Real-time Updates**: Harmony colors update automatically as you adjust the base color
+5. **Preserve Original Colors**: Generated palette appears in a separate section, keeping the original 72-color palette available
+6. **Clear Generated Palette**: Use the clear button to hide generated colors when not needed
 
 ### Features
 

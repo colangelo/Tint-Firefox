@@ -1,7 +1,27 @@
 // Enhanced background.js with color picker functionality
 const DEFAULT_THEMES = [
+    // Original 7 colors (maintained for compatibility)
     '#ec5f67', '#f99157', '#fac863', '#99c794',
-    '#5fb3b3', '#6699cc', '#c594c5'
+    '#5fb3b3', '#6699cc', '#c594c5',
+    
+    // Expanded palette - carefully selected for good contrast and variety
+    // Additional reds/pinks
+    '#ff4757', '#ff6b9d', '#e55039',
+    
+    // Additional oranges/yellows
+    '#ffa502', '#ffdd59', '#feca57',
+    
+    // Additional greens
+    '#32ff7e', '#2ed573', '#20bf6b',
+    
+    // Additional blues/cyans
+    '#70a1ff', '#0abde3', '#74b9ff',
+    
+    // Additional purples/magentas
+    '#a55eea', '#8c7ae6', '#fd79a8',
+    
+    // Grays for variety
+    '#57606f', '#95a5a6', '#636e72'
 ];
 
 class ThemeManager {

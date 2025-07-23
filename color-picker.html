@@ -144,6 +144,54 @@
             background: #1976D2;
         }
         
+        .generated-palette-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .generated-palette {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .generated-color {
+            width: 100%;
+            height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .generated-color:hover {
+            transform: scale(1.05);
+            border-color: #333;
+        }
+        
+        .clear-btn {
+            padding: 6px 12px;
+            border: 1px solid #f44336;
+            border-radius: 4px;
+            background: white;
+            color: #f44336;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            float: right;
+        }
+        
+        .clear-btn:hover {
+            background: #f44336;
+            color: white;
+        }
+        
         .color-input-wrapper {
             display: flex;
             align-items: center;
@@ -207,6 +255,12 @@
     <h3>Choose Window Color</h3>
     
     <div class="preset-colors" id="presetColors"></div>
+    
+    <div class="generated-palette-section" id="generatedPaletteSection" style="display: none;">
+        <h4>Generated Palette</h4>
+        <div class="generated-palette" id="generatedPalette"></div>
+        <button id="clearPaletteBtn" class="clear-btn">Clear Generated Palette</button>
+    </div>
     
     <div class="color-harmony-section">
         <h4>Color Harmony</h4>

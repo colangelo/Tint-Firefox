@@ -248,20 +248,24 @@ function setupColorPicker() {
     // Generate palette button
     generatePaletteBtn.addEventListener('click', () => {
         const baseColor = selectedColor || '#6699cc';
-        const palette = ColorUtils.generatePalette(baseColor, 12);
+        const palette = ColorUtils.generatePalette(baseColor, 16);
         
-        // Replace current preset colors with generated palette
-        const container = document.getElementById('presetColors');
+        // Show generated palette section
+        const section = document.getElementById('generatedPaletteSection');
+        section.style.display = 'block';
+        
+        // Populate generated palette container (separate from preset colors)
+        const container = document.getElementById('generatedPalette');
         container.innerHTML = '';
         
         palette.forEach(color => {
             const colorDiv = document.createElement('div');
-            colorDiv.className = 'color-option';
+            colorDiv.className = 'generated-color';
             colorDiv.style.backgroundColor = color;
-            colorDiv.dataset.color = color;
+            colorDiv.title = color;
             
             colorDiv.addEventListener('click', () => {
-                selectPresetColor(color);
+                selectColor(color);
             });
             
             container.appendChild(colorDiv);
@@ -272,6 +276,19 @@ function setupColorPicker() {
         setTimeout(() => {
             generatePaletteBtn.textContent = 'Generate Palette';
         }, 1000);
+    });
+    
+    // Clear generated palette button
+    const clearPaletteBtn = document.getElementById('clearPaletteBtn');
+    clearPaletteBtn.addEventListener('click', () => {
+        const section = document.getElementById('generatedPaletteSection');
+        section.style.display = 'none';
+        
+        // Visual feedback
+        clearPaletteBtn.textContent = '✓ Cleared';
+        setTimeout(() => {
+            clearPaletteBtn.textContent = 'Clear Generated Palette';
+        }, 500);
     });
 }
 

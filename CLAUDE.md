@@ -88,12 +88,17 @@ To verify performance improvements:
 - `theme`: Ability to modify browser theme colors per window
 - `storage`: Local storage for custom color persistence
 
-### New Features in v4.0
+### New Features in v4.x
 - **Color harmony generation**: Interactive buttons for complementary, triadic, analogous, and monochromatic schemes
 - **Smart palette generation**: Create harmonious color palettes from any base color
 - **Advanced color science**: HSL/RGB conversion utilities and color theory algorithms
 - **Real-time harmony updates**: Dynamic color scheme generation as you adjust colors
 - **Enhanced contrast calculation**: WCAG-inspired text color optimization
+
+### Improvements in v4.1
+- **Preserved original palette**: Generated palettes appear in separate section, maintaining access to 72 original colors
+- **Better UX organization**: Clear separation between preset colors, generated palettes, and harmony tools
+- **Enhanced usability**: Clear button to hide generated palette when not needed
 
 ### Features from v3.x
 - **Toolbar button**: Click to open color picker interface

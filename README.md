@@ -20,7 +20,7 @@ Each new window opens with a different theme (much colorfulness).
 - **Memory efficient**: Lightweight with optimized performance
 - **Clean uninstall**: Themes reset when extension is removed
 
-### New in v3.0: Enhanced Color Picker
+### New in v3.x: Enhanced Color Picker
 
 - **Custom colors**: Choose any color for individual windows
 - **72 preset colors**: Comprehensive palette organized by color families
@@ -29,9 +29,23 @@ Each new window opens with a different theme (much colorfulness).
 - **One-click toolbar button**: Easy access to color picker
 - **Auto contrast**: Smart text color calculation for optimal readability
 
+### New in v4.0: Advanced Color Science
+
+- **Color harmony generator**: Create complementary, triadic, analogous, and monochromatic color schemes
+- **Smart palette generation**: Generate harmonious color palettes from any base color
+- **Enhanced contrast calculation**: WCAG-inspired text color optimization for better readability
+- **Interactive color theory**: Click harmony buttons to explore color relationships
+- **Dynamic palette updates**: Real-time harmony updates as you adjust colors
+
 ## Performance
 
-### v3.0 Enhancements
+### v4.0 Enhancements
+
+- **Advanced color algorithms**: Optimized HSL/RGB conversions for real-time harmony generation
+- **Efficient color science**: JavaScript-based color theory implementation (WASM alternative)
+- **Interactive performance**: Smooth real-time updates for color harmony and palette generation
+
+### v3.x Enhancements
 
 - **Enhanced theming**: Improved toolbar and UI element coloring
 - **Efficient storage**: Optimized custom color persistence
@@ -66,12 +80,19 @@ No build process required - edit files directly and reload the extension in `abo
 - Each new window automatically gets a unique color from the 7-color palette
 - Colors are distributed evenly to ensure variety
 
-### Custom Color Mode (New in v3.x)
+### Custom Color Mode (v3.x+)
 
 1. Click the extension toolbar button (colorful window icon)
 2. Choose from 72 preset colors organized by color families or use the custom color picker
 3. Click "Apply Color" to theme the current window
 4. Use "Reset to Auto" to return to automatic color assignment
+
+### Advanced Color Features (v4.0+)
+
+1. **Color Harmony**: Click harmony buttons (Complementary, Triadic, Analogous, Monochromatic) to generate color schemes
+2. **Palette Generation**: Click "Generate Palette" to create a custom color palette from your selected color
+3. **Interactive Color Theory**: Select any harmony color to use it as your window theme
+4. **Real-time Updates**: Harmony colors update automatically as you adjust the base color
 
 ### Features
 

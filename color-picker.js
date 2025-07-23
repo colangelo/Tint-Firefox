@@ -28,18 +28,12 @@ const PRESET_COLORS = [
 let currentWindowId = null;
 let selectedColor = null;
 
-// Normalize hex color (expand shorthand and ensure # prefix)
+// Use ColorUtils for normalization
 function normalizeHex(hex) {
-    // Remove # if present, then add it back
-    hex = hex.replace('#', '');
-    
-    // Expand shorthand hex (e.g., "ddd" to "dddddd")
-    if (hex.length === 3) {
-        hex = hex.split('').map(char => char + char).join('');
-    }
-    
-    return '#' + hex.toLowerCase();
+    return ColorUtils.normalizeHex(hex);
 }
+
+let currentHarmonyType = null;
 
 // Get current window ID
 async function initialize() {
@@ -54,6 +48,7 @@ async function initialize() {
     }
     
     setupPresetColors();
+    setupColorHarmony();
     setupColorPicker();
 }
 
@@ -100,11 +95,72 @@ function updateColorDisplay(color) {
     document.getElementById('colorValue').value = normalizedColor;
 }
 
+function setupColorHarmony() {
+    const harmonyButtons = {
+        'complementaryBtn': 'complementary',
+        'triadicBtn': 'triadic', 
+        'analogousBtn': 'analogous',
+        'monochromaticBtn': 'monochromatic'
+    };
+    
+    Object.entries(harmonyButtons).forEach(([btnId, harmonyType]) => {
+        document.getElementById(btnId).addEventListener('click', () => {
+            generateColorHarmony(harmonyType);
+            setActiveHarmonyButton(btnId);
+        });
+    });
+}
+
+function setActiveHarmonyButton(activeId) {
+    document.querySelectorAll('.harmony-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById(activeId).classList.add('active');
+}
+
+function generateColorHarmony(type) {
+    const baseColor = selectedColor || '#6699cc';
+    const colors = ColorUtils.generateHarmony(baseColor, type);
+    currentHarmonyType = type;
+    
+    const container = document.getElementById('harmonyColors');
+    container.innerHTML = '';
+    
+    colors.forEach(color => {
+        const colorDiv = document.createElement('div');
+        colorDiv.className = 'harmony-color';
+        colorDiv.style.backgroundColor = color;
+        colorDiv.title = color;
+        
+        colorDiv.addEventListener('click', () => {
+            selectColor(color);
+        });
+        
+        container.appendChild(colorDiv);
+    });
+}
+
+function selectColor(color) {
+    selectedColor = normalizeHex(color);
+    updateColorDisplay(selectedColor);
+    
+    // Remove selection from preset colors
+    document.querySelectorAll('.color-option').forEach(el => {
+        el.classList.remove('selected');
+    });
+    
+    // Highlight selected color in harmony if it matches
+    document.querySelectorAll('.harmony-color').forEach(el => {
+        el.style.border = el.style.backgroundColor === color ? '2px solid #333' : '2px solid transparent';
+    });
+}
+
 function setupColorPicker() {
     const colorPicker = document.getElementById('colorPicker');
     const colorValue = document.getElementById('colorValue');
     const applyBtn = document.getElementById('applyBtn');
     const resetBtn = document.getElementById('resetBtn');
+    const generatePaletteBtn = document.getElementById('generatePaletteBtn');
     
     // Sync color picker and text input
     colorPicker.addEventListener('input', (e) => {
@@ -115,6 +171,11 @@ function setupColorPicker() {
         document.querySelectorAll('.color-option').forEach(el => {
             el.classList.remove('selected');
         });
+        
+        // Update harmony if active
+        if (currentHarmonyType) {
+            generateColorHarmony(currentHarmonyType);
+        }
     });
     
     colorValue.addEventListener('input', (e) => {
@@ -127,6 +188,11 @@ function setupColorPicker() {
             document.querySelectorAll('.color-option').forEach(el => {
                 el.classList.remove('selected');
             });
+            
+            // Update harmony if active
+            if (currentHarmonyType) {
+                generateColorHarmony(currentHarmonyType);
+            }
         }
     });
     
@@ -176,6 +242,35 @@ function setupColorPicker() {
         resetBtn.textContent = '✓ Reset';
         setTimeout(() => {
             resetBtn.textContent = 'Reset to Auto';
+        }, 1000);
+    });
+    
+    // Generate palette button
+    generatePaletteBtn.addEventListener('click', () => {
+        const baseColor = selectedColor || '#6699cc';
+        const palette = ColorUtils.generatePalette(baseColor, 12);
+        
+        // Replace current preset colors with generated palette
+        const container = document.getElementById('presetColors');
+        container.innerHTML = '';
+        
+        palette.forEach(color => {
+            const colorDiv = document.createElement('div');
+            colorDiv.className = 'color-option';
+            colorDiv.style.backgroundColor = color;
+            colorDiv.dataset.color = color;
+            
+            colorDiv.addEventListener('click', () => {
+                selectPresetColor(color);
+            });
+            
+            container.appendChild(colorDiv);
+        });
+        
+        // Visual feedback
+        generatePaletteBtn.textContent = '✓ Generated';
+        setTimeout(() => {
+            generatePaletteBtn.textContent = 'Generate Palette';
         }, 1000);
     });
 }

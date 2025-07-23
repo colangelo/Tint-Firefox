@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Firefox browser extension called "Colorful Windows Enhanced" that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes. Version 3.0 adds a color picker interface for custom window theming.
+This is a Firefox browser extension called "Colorful Windows Enhanced" that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes. Version 4.0 adds advanced color science features including color harmony generation and smart palette creation.
 
 ## Architecture
 
@@ -12,8 +12,9 @@ The extension consists of:
 
 - **manifest.json**: WebExtension manifest (v2) defining permissions for `tabs`, `theme`, and `storage` APIs
 - **background.js**: Main extension logic using the WebExtensions API with ThemeManager class
-- **color-picker.html**: Color picker interface for custom window theming
-- **color-picker.js**: Frontend logic for color selection and storage
+- **color-picker.html**: Advanced color picker interface with harmony generation
+- **color-picker.js**: Frontend logic for color selection, harmony, and palette generation
+- **color-utils.js**: Advanced color science utilities (HSL/RGB conversion, harmony algorithms)
 - **icon.png**: Extension icon (128px)
 - **screenshots/**: Visual documentation
 
@@ -42,6 +43,14 @@ The extension consists of:
 - Scrollable grid layout with 12-column responsive design
 - Per-window color persistence using `storage.local`
 - Real-time color preview and application
+
+**Advanced Color Science (v4.0)**:
+- **ColorUtils class**: Comprehensive color manipulation utilities
+- **Color harmony generation**: Complementary, triadic, analogous, and monochromatic schemes
+- **HSL/RGB conversion**: Optimized algorithms for color space transformations
+- **Smart palette generation**: Create harmonious color palettes from base colors
+- **Enhanced contrast calculation**: WCAG-inspired text color optimization
+- **Interactive color theory**: Real-time harmony updates and selection
 
 **Event Listeners**:
 - Window creation/removal for automatic theming
@@ -79,12 +88,18 @@ To verify performance improvements:
 - `theme`: Ability to modify browser theme colors per window
 - `storage`: Local storage for custom color persistence
 
-### New Features in v3.0
+### New Features in v4.0
+- **Color harmony generation**: Interactive buttons for complementary, triadic, analogous, and monochromatic schemes
+- **Smart palette generation**: Create harmonious color palettes from any base color
+- **Advanced color science**: HSL/RGB conversion utilities and color theory algorithms
+- **Real-time harmony updates**: Dynamic color scheme generation as you adjust colors
+- **Enhanced contrast calculation**: WCAG-inspired text color optimization
+
+### Features from v3.x
 - **Toolbar button**: Click to open color picker interface
 - **Custom colors**: Choose any color for individual windows
 - **Color persistence**: Custom colors saved and restored
 - **Enhanced theming**: Improved toolbar and UI element coloring
-- **Smart contrast**: Automatic text color optimization
 
 ## Claude's Learning Journey
 

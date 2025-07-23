@@ -71,9 +71,8 @@ class ThemeManager {
                 frame: color,
                 tab_background_text: textColor,
                 toolbar: color,
-                toolbar_text: textColor,
-                toolbar_field: color,
-                toolbar_field_text: textColor
+                toolbar_text: textColor
+                // Removed toolbar_field properties to keep address bar default
             }
         });
     }

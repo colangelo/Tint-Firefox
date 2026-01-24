@@ -10,7 +10,7 @@ Firefox browser extension that dynamically themes browser windows with different
 
 ## Architecture
 
-```
+```txt
 ├── manifest.json      # WebExtension manifest (v2)
 ├── background.js      # Main extension logic (ThemeManager class)
 ├── color-picker.html  # Color picker UI
@@ -24,6 +24,7 @@ Firefox browser extension that dynamically themes browser windows with different
 ### Core Components
 
 **ThemeManager class** (`background.js`):
+
 - `DEFAULT_THEMES`: Array of 32 curated color themes
 - `windowThemes`: Map tracking automatic theme assignments
 - `customColors`: Map storing per-window custom colors
@@ -33,6 +34,7 @@ Firefox browser extension that dynamically themes browser windows with different
 - `freeTheme()`: Cleanup when windows close
 
 **ColorUtils class** (`color-utils.js`):
+
 - `hexToRgb()` / `rgbToHex()`: Color format conversion
 - `rgbToHsl()` / `hslToRgb()`: Color space conversion
 - `generateHarmony(color, type)`: Complementary, triadic, analogous, monochromatic
@@ -41,6 +43,7 @@ Firefox browser extension that dynamically themes browser windows with different
 - `getAccessibleTextColor()`: AA-compliant text color selection
 
 **Color Picker** (`color-picker.js`):
+
 - 72 preset colors organized by families
 - Custom hex input with validation
 - Harmony generation buttons
@@ -71,13 +74,14 @@ No build process required. Files are used directly.
 ```
 
 Creates:
+
 - `colorful-windows-enhanced-X.X.X.xpi` - Extension package
 - `colorful-windows-enhanced-X.X.X-source.zip` - Source for review
 
 ### Key Permissions
 
 | Permission | Purpose |
-|------------|---------|
+| ------------ | --------- |
 | `tabs` | Query/manage tabs for color picker deduplication |
 | `theme` | Apply per-window color themes |
 | `storage` | Persist custom color preferences |

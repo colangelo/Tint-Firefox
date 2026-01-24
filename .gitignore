@@ -4,3 +4,7 @@
 # VS Code
 .vscode/
 *.code-workspace
+
+# Build artifacts
+*.xpi
+*-source.zip

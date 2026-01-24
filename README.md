@@ -135,3 +135,7 @@ The extension uses Firefox's `theme` API to dynamically color window frames. Eac
 
 - **Firefox**: Full support (Manifest V2)
 - **Chrome**: Not supported (uses different theming APIs)
+
+## Privacy Policy
+
+Colorful Windows Enhanced does not collect, transmit, or share any personal data. Custom color preferences are stored locally in your browser profile only and are never sent to external servers. This extension has no analytics, tracking, or data collection features.

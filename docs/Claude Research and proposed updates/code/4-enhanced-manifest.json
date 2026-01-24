@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Colorful Windows Enhanced",
+  "version": "3.0",
+  "description": "Dynamic colorful firefox windows with custom color picker",
+  "homepage_url": "https://github.com/yourusername/Colorful-window-theme-enhanced",
+
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Click to change window color"
+  },
+
+  "sidebar_action": {
+    "default_panel": "color-picker.html",
+    "default_title": "Color Picker"
+  },
+
+  "permissions": [
+    "tabs",
+    "theme",
+    "windows",
+    "storage",
+    "contextMenus"
+  ],
+
+  "web_accessible_resources": [
+    "color_processor.wasm"
+  ],
+
+  "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; object-src 'none'"
+}

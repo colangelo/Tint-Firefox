@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Window Color Picker</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        h3 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .preset-colors {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .color-option.selected {
+            border-color: #333;
+        }
+        
+        .color-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        
+        .custom-color-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .color-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        #colorPicker {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #colorValue {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        #applyBtn {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        #applyBtn:hover {
+            background: #45a049;
+        }
+        
+        #resetBtn {
+            background: #f44336;
+            color: white;
+        }
+        
+        #resetBtn:hover {
+            background: #da190b;
+        }
+        
+        .current-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Choose Window Color</h3>
+    
+    <div class="preset-colors" id="presetColors"></div>
+    
+    <div class="custom-color-section">
+        <h4>Custom Color</h4>
+        <div class="color-input-wrapper">
+            <input type="color" id="colorPicker" value="#6699cc">
+            <input type="text" id="colorValue" value="#6699cc" placeholder="#RRGGBB">
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <button id="applyBtn">Apply Color</button>
+        <button id="resetBtn">Reset to Auto</button>
+    </div>
+    
+    <script src="color-picker.js"></script>
+</body>
+</html>

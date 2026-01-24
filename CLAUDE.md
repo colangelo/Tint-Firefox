@@ -4,145 +4,92 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Firefox browser extension called "Colorful Windows Enhanced" that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes. Version 4.0 adds advanced color science features including color harmony generation and smart palette creation.
+Firefox browser extension that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes.
+
+**Fork of**: [Colorful Windows](https://github.com/DaveDuck321/Colorful-window-theme) by DaveDuck321
 
 ## Architecture
 
-The extension consists of:
-
-- **manifest.json**: WebExtension manifest (v2) defining permissions for `tabs`, `theme`, and `storage` APIs
-- **background.js**: Main extension logic using the WebExtensions API with ThemeManager class
-- **color-picker.html**: Advanced color picker interface with harmony generation
-- **color-picker.js**: Frontend logic for color selection, harmony, and palette generation
-- **color-utils.js**: Advanced color science utilities (HSL/RGB conversion, harmony algorithms)
-- **icon.png**: Extension icon (128px)
-- **screenshots/**: Visual documentation
+```
+├── manifest.json      # WebExtension manifest (v2)
+├── background.js      # Main extension logic (ThemeManager class)
+├── color-picker.html  # Color picker UI
+├── color-picker.js    # Color picker frontend logic
+├── color-utils.js     # Color science utilities (HSL/RGB, harmony)
+├── icons/             # Extension icons (48, 96, 128px)
+├── package.sh         # Packaging script for AMO submission
+└── screenshots/       # Visual documentation
+```
 
 ### Core Components
 
-**ThemeManager class** (`background.js:7-83`):
-
-- Manages theme distribution and custom color storage
-- Tracks theme usage with least-used selection algorithm
-- Handles automatic contrast calculation for custom colors
-- Maintains separate maps for window themes and custom colors
-
-**Theme Management**:
-
-- `DEFAULT_THEMES`: Array of 32 carefully curated color themes for automatic assignment
+**ThemeManager class** (`background.js`):
+- `DEFAULT_THEMES`: Array of 32 curated color themes
 - `windowThemes`: Map tracking automatic theme assignments
-- `customColors`: Map storing per-window custom color preferences
-
-**Core Functions**:
-
+- `customColors`: Map storing per-window custom colors
 - `getNextTheme()`: O(n) selection of least-used theme
 - `applyTheme(windowId, customColor)`: Applies theme with optional custom color
-- `calculateContrastColor()`: Determines optimal text color for readability
-- `freeTheme()`: Cleans up theme assignments when windows close
+- `calculateContrastColor()`: WCAG-inspired text color calculation
+- `freeTheme()`: Cleanup when windows close
 
-**Color Picker Interface**:
+**ColorUtils class** (`color-utils.js`):
+- `hexToRgb()` / `rgbToHex()`: Color format conversion
+- `rgbToHsl()` / `hslToRgb()`: Color space conversion
+- `generateHarmony(color, type)`: Complementary, triadic, analogous, monochromatic
+- `generatePalette(color, count)`: Create harmonious palettes
+- `getContrastRatio()`: WCAG contrast calculation
+- `getAccessibleTextColor()`: AA-compliant text color selection
 
-- 72 preset colors organized by color families (reds, oranges, yellows, greens, blues, purples, grays)
-- Custom color picker with hex input validation
-- Scrollable grid layout with 12-column responsive design
-- Per-window color persistence using `storage.local`
-- Real-time color preview and application
+**Color Picker** (`color-picker.js`):
+- 72 preset colors organized by families
+- Custom hex input with validation
+- Harmony generation buttons
+- Palette generation
+- Per-window persistence via `storage.local`
 
-**Advanced Color Science (v4.0)**:
+### Event Flow
 
-- **ColorUtils class**: Comprehensive color manipulation utilities
-- **Color harmony generation**: Complementary, triadic, analogous, and monochromatic schemes
-- **HSL/RGB conversion**: Optimized algorithms for color space transformations
-- **Smart palette generation**: Create harmonious color palettes from base colors
-- **Enhanced contrast calculation**: WCAG-inspired text color optimization
-- **Interactive color theory**: Real-time harmony updates and selection
-
-**Event Listeners**:
-
-- Window creation/removal for automatic theming
-- Browser action click for color picker access
-- Message passing for UI-background communication
+1. Window created → `getNextTheme()` → `applyTheme()`
+2. Browser action clicked → Open/focus color picker tab
+3. User selects color → Message to background → `applyTheme(windowId, color)`
+4. Window closed → `freeTheme()` decrements usage counter
 
 ## Development
 
-This is a simple browser extension with no build process, test suite, or package dependencies. Files can be modified directly and loaded into Firefox for testing using `about:debugging`.
+No build process required. Files are used directly.
 
-### Performance Optimizations (v2.1)
+### Testing
 
-The extension has been optimized with several performance improvements:
+1. Open `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Select `manifest.json`
 
-- **O(n) theme selection**: Replaced O(n log n) sorting with single-pass selection
-- **Parallel window theming**: Uses `Promise.all` for faster startup with multiple windows  
-- **Reduced memory allocations**: Eliminated temporary arrays and object creation
-- **Better cache locality**: Direct array access instead of object property lookups
+### Packaging for AMO
 
-### Testing the Extension
+```bash
+./package.sh
+```
 
-1. Open Firefox and navigate to `about:debugging`
-2. Click "This Firefox" → "Load Temporary Add-on"
-3. Select the `manifest.json` file from this directory
-4. Open new windows to see different color themes applied
+Creates:
+- `colorful-windows-enhanced-X.X.X.xpi` - Extension package
+- `colorful-windows-enhanced-X.X.X-source.zip` - Source for review
 
-### Performance Testing
+### Key Permissions
 
-To verify performance improvements:
+| Permission | Purpose |
+|------------|---------|
+| `tabs` | Query/manage tabs for color picker deduplication |
+| `theme` | Apply per-window color themes |
+| `storage` | Persist custom color preferences |
 
-1. Open Firefox DevTools (F12)
-2. Go to Performance tab
-3. Start recording before opening multiple windows
-4. Compare with previous version metrics
+## Performance Notes
 
-### Key Extension Permissions
+- **Parallel initialization**: `Promise.all` for multiple windows at startup
+- **O(n) theme selection**: Single-pass instead of sorting
+- **Minimal allocations**: Reuses theme objects, avoids temporary arrays
 
-- `tabs`: Access to browser tabs API for window management
-- `theme`: Ability to modify browser theme colors per window
-- `storage`: Local storage for custom color persistence
+## Related Documents
 
-### New Features in v4.x
-
-- **Color harmony generation**: Interactive buttons for complementary, triadic, analogous, and monochromatic schemes
-- **Smart palette generation**: Create harmonious color palettes from any base color
-- **Advanced color science**: HSL/RGB conversion utilities and color theory algorithms
-- **Real-time harmony updates**: Dynamic color scheme generation as you adjust colors
-- **Enhanced contrast calculation**: WCAG-inspired text color optimization
-
-### Improvements in v4.1
-
-- **Preserved original palette**: Generated palettes appear in separate section, maintaining access to 72 original colors
-- **Better UX organization**: Clear separation between preset colors, generated palettes, and harmony tools
-- **Enhanced usability**: Clear button to hide generated palette when not needed
-
-### Improvements in v4.2
-
-- **Expanded automatic theming**: Automatic window colors now use 21 curated colors (3x more variety)
-- **Better color distribution**: More diverse themes across reds, oranges, yellows, greens, blues, purples, and grays
-- **Maintained compatibility**: Original 7 colors preserved as first colors in expanded palette
-
-### Improvements in v4.3
-
-- **32 automatic themes**: Further expanded to 32 colors for maximum window differentiation
-- **Optimized for heavy users**: Perfect for users who open many windows simultaneously
-- **Enhanced color variety**: Includes both vibrant and pastel variants for better visual harmony
-- **Improved spectrum coverage**: Better distribution across the entire color spectrum
-
-### Improvements in v4.4
-
-- **Smart tab management**: Browser action now focuses existing color picker tabs instead of creating duplicates
-- **Enhanced UX**: Prevents tab clutter and provides more intuitive behavior
-- **Window-scoped logic**: Only checks for existing color picker tabs within the same window
-- **Fix for location bar coloring**
-
-### Features from v3.x
-
-- **Toolbar button**: Click to open color picker interface
-- **Custom colors**: Choose any color for individual windows
-- **Color persistence**: Custom colors saved and restored
-- **Enhanced theming**: Improved toolbar and UI element coloring
-
-## Claude's Learning Journey
-
-- Learned that this is a Firefox-specific browser extension for dynamic window theming
-- Understood the core logic of theme selection and application using JavaScript and WebExtensions API
-- Recognized the performance optimization techniques implemented in version 2.1
-- Noted the simplicity of the extension with direct file modifications and no complex build process
-- Appreciated the thoughtful approach to theme distribution using usage tracking and timestamps
+- `CHANGELOG.md` - Version history
+- `ROADMAP.md` - Future development plans
+- `README.md` - User documentation

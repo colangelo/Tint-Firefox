@@ -17,6 +17,7 @@ Firefox browser extension that dynamically themes browser windows with different
 ├── color-picker.js    # Color picker frontend logic
 ├── color-utils.js     # Color science utilities (HSL/RGB, harmony)
 ├── icons/             # Extension icons (48, 96, 128px)
+├── justfile           # Project management recipes
 ├── package.sh         # Packaging script for AMO submission
 └── screenshots/       # Visual documentation
 ```
@@ -61,16 +62,35 @@ Firefox browser extension that dynamically themes browser windows with different
 
 No build process required. Files are used directly.
 
+### Project Management (justfile)
+
+```bash
+just                    # Show all available recipes
+just debug              # Open Firefox about:debugging
+just validate           # Check manifest.json validity
+just version            # Show current version
+just package            # Build .xpi and source.zip
+just bump 4.5.0         # Update version in manifest
+just release 4.5.0      # Bump + package
+just full-release 4.5.0 # Clean + release + checklist
+just clean              # Remove build artifacts
+just inspect            # List .xpi contents
+just commit "msg"       # Stage all + commit
+just push               # Push main to casomai
+just push-branch        # Push current branch
+just gh-casomai         # Switch GitHub CLI account
+```
+
 ### Testing
 
-1. Open `about:debugging#/runtime/this-firefox`
+1. Run `just debug` or open `about:debugging#/runtime/this-firefox`
 2. Click "Load Temporary Add-on"
 3. Select `manifest.json`
 
 ### Packaging for AMO
 
 ```bash
-./package.sh
+just package   # or ./package.sh
 ```
 
 Creates:

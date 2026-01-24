@@ -79,7 +79,7 @@ Here's the complete enhanced version that adds the ability to choose colors per 
 The key insight is that this extension is already quite efficient for its use case. The main performance gains come from:
 
 - Parallel initialization
-- Optimized selection algorithm  
+- Optimized selection algorithm
 - Better memory management
 
 The color picker feature adds significant value without compromising performance. WebAssembly would only be beneficial if you plan to add computationally intensive color processing features.

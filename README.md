@@ -136,6 +136,10 @@ The extension uses Firefox's `theme` API to dynamically color window frames. Eac
 - **Firefox**: Full support (Manifest V2)
 - **Chrome**: Not supported (uses different theming APIs)
 
+## Credits
+
+This is a fork of [Colorful Windows](https://addons.mozilla.org/en-US/firefox/addon/colorful-windows/) by [DaveDuck321](https://github.com/DaveDuck321/Colorful-window-theme). The original extension provided the foundation for automatic window theming. This enhanced version adds the custom color picker, expanded palette, and color harmony features.
+
 ## Privacy Policy
 
 Colorful Windows Enhanced does not collect, transmit, or share any personal data. Custom color preferences are stored locally in your browser profile only and are never sent to external servers. This extension has no analytics, tracking, or data collection features.

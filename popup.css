@@ -232,13 +232,72 @@ details > button {
   border-color: #4CAF50;
 }
 
+/* Color Preview */
+.color-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.color-preview.empty {
+  opacity: 0.5;
+}
+
+.preview-swatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  background: linear-gradient(45deg, #eee 25%, transparent 25%),
+              linear-gradient(-45deg, #eee 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #eee 75%),
+              linear-gradient(-45deg, transparent 75%, #eee 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.preview-swatch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: var(--preview-color, transparent);
+}
+
+.preview-swatch.has-color {
+  border-color: #999;
+}
+
+.preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.preview-label {
+  font-size: 11px;
+  color: #888;
+}
+
+.preview-hex {
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
 /* Action buttons */
 .actions {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #ddd;
+  margin-top: 10px;
 }
 
 .actions button {

@@ -53,6 +53,9 @@ async function initialize() {
   if (saved[`window_${currentWindowId}`]) {
     selectedColor = normalizeHex(saved[`window_${currentWindowId}`]);
     updateColorDisplay(selectedColor);
+  } else {
+    // Initialize empty preview state
+    updatePreview(null);
   }
 
   setupQuickColors();
@@ -130,11 +133,31 @@ function selectColor(color, isPreset = false) {
   }
 }
 
-// Update color picker display
+// Update color picker display and preview
 function updateColorDisplay(color) {
   const normalizedColor = normalizeHex(color);
   document.getElementById('colorPicker').value = normalizedColor;
   document.getElementById('colorValue').value = normalizedColor;
+  updatePreview(normalizedColor);
+}
+
+// Update the color preview swatch
+function updatePreview(color) {
+  const preview = document.getElementById('colorPreview');
+  const swatch = document.getElementById('previewSwatch');
+  const hex = document.getElementById('previewHex');
+
+  if (color) {
+    swatch.style.setProperty('--preview-color', color);
+    swatch.classList.add('has-color');
+    hex.textContent = color.toUpperCase();
+    preview.classList.remove('empty');
+  } else {
+    swatch.style.removeProperty('--preview-color');
+    swatch.classList.remove('has-color');
+    hex.textContent = 'None';
+    preview.classList.add('empty');
+  }
 }
 
 // Setup harmony buttons
@@ -283,6 +306,7 @@ function setupActionButtons() {
       el.classList.remove('selected');
       el.style.borderColor = 'transparent';
     });
+    updatePreview(null);
 
     // Visual feedback
     resetBtn.textContent = 'Reset!';

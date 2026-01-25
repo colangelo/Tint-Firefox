@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h3>Choose Window Color</h3>
+
+  <!-- Quick Pick (always visible) -->
+  <section class="quick-pick">
+    <h4>Quick Pick</h4>
+    <div id="quickColors" class="color-grid quick"></div>
+  </section>
+
+  <!-- Accordion sections -->
+  <details id="presetsSection">
+    <summary>All Preset Colors (72)</summary>
+    <div id="presetColors" class="color-grid scrollable"></div>
+  </details>
+
+  <details id="harmonySection">
+    <summary>Color Harmony</summary>
+    <div class="harmony-buttons">
+      <button data-type="complementary">Complementary</button>
+      <button data-type="triadic">Triadic</button>
+      <button data-type="analogous">Analogous</button>
+      <button data-type="monochromatic">Monochromatic</button>
+    </div>
+    <div id="harmonyColors" class="color-grid harmony"></div>
+  </details>
+
+  <details id="paletteSection">
+    <summary>Generate Palette</summary>
+    <button id="generatePaletteBtn" class="palette-btn">Generate from Selected</button>
+    <div id="generatedPalette" class="color-grid palette"></div>
+  </details>
+
+  <details id="customSection">
+    <summary>Custom Color</summary>
+    <div class="custom-input">
+      <input type="color" id="colorPicker" value="#6699cc">
+      <input type="text" id="colorValue" value="#6699cc" placeholder="#RRGGBB">
+    </div>
+  </details>
+
+  <!-- Actions (always visible) -->
+  <div class="actions">
+    <button id="applyBtn" class="primary">Apply Color</button>
+    <button id="resetBtn" class="danger">Reset to Auto</button>
+  </div>
+
+  <div class="footer">
+    <a href="#" id="openFullBtn">Open in tab</a>
+  </div>
+
+  <script src="color-utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

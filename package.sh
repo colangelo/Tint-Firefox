@@ -16,6 +16,9 @@ rm -f *.xpi *-source.zip
 zip -r "$XPI_NAME" \
   manifest.json \
   background.js \
+  popup.html \
+  popup.css \
+  popup.js \
   color-picker.html \
   color-picker.js \
   color-utils.js \
@@ -26,6 +29,9 @@ zip -r "$XPI_NAME" \
 zip -r "$SRC_NAME" \
   manifest.json \
   background.js \
+  popup.html \
+  popup.css \
+  popup.js \
   color-picker.html \
   color-picker.js \
   color-utils.js \

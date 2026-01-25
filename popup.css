@@ -51,9 +51,6 @@ h4 {
 }
 
 .color-grid.scrollable {
-  max-height: 150px;
-  overflow-y: auto;
-  scrollbar-width: thin;
   padding: 4px;
   background: white;
   border-radius: 4px;
@@ -354,21 +351,3 @@ details > button {
   text-decoration: underline;
 }
 
-/* Scrollbar styling for webkit */
-.color-grid.scrollable::-webkit-scrollbar {
-  width: 6px;
-}
-
-.color-grid.scrollable::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-.color-grid.scrollable::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-.color-grid.scrollable::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}

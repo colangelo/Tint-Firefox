@@ -117,29 +117,7 @@ class ThemeManager {
 // Initialize theme manager
 const themeManager = new ThemeManager();
 
-// Browser action (toolbar button) for color picker
-browser.browserAction.onClicked.addListener(async (tab) => {
-    const colorPickerUrl = browser.runtime.getURL('color-picker.html');
-    
-    // Check if a color picker tab is already open in this window
-    const existingTabs = await browser.tabs.query({
-        url: colorPickerUrl,
-        windowId: tab.windowId
-    });
-    
-    if (existingTabs.length > 0) {
-        // Focus the existing color picker tab
-        await browser.tabs.update(existingTabs[0].id, { active: true });
-    } else {
-        // Create a new color picker tab
-        browser.tabs.create({
-            url: colorPickerUrl,
-            windowId: tab.windowId
-        });
-    }
-});
-
-// Message handler for color picker
+// Message handler for color picker (popup and full-page color picker)
 browser.runtime.onMessage.addListener(async (message, sender) => {
     if (message.action === 'setWindowColor') {
         await themeManager.applyTheme(message.windowId, message.color);

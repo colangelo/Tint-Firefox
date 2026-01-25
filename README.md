@@ -56,6 +56,15 @@ Each new window opens with a different theme (much colorfulness).
 - **Pastel color integration**: Added beautiful pastel variants alongside vibrant colors
 - **Improved color harmony**: Colors selected to work well together across the spectrum
 
+### New in v4.5: Popup UI
+
+- **Instant popup access**: Click toolbar icon for immediate color picker (no new tab)
+- **Quick Pick colors**: 12 vibrant favorites always visible at the top
+- **Accordion sections**: Collapsible sections for presets, harmony, palette, and custom color
+- **Color preview**: See your selected color before applying
+- **Compact design**: Optimized for Firefox's popup constraints (340×580px)
+- **Full picker option**: "Open in tab" link for expanded view when needed
+
 ### Improvements in v4.4
 
 - **Smart tab management**: Clicking the extension button now focuses existing color picker tabs instead of creating duplicates
@@ -105,12 +114,14 @@ No build process required - edit files directly and reload the extension in `abo
 - Each new window automatically gets a unique color from the 32-color curated palette
 - Colors are distributed evenly to ensure maximum variety and excellent visual differentiation for many windows
 
-### Custom Color Mode (v3.x+)
+### Custom Color Mode (v4.5+)
 
-1. Click the extension toolbar button (colorful window icon)
-2. Choose from 72 preset colors organized by color families or use the custom color picker
-3. Click "Apply Color" to theme the current window
-4. Use "Reset to Auto" to return to automatic color assignment
+1. Click the extension toolbar button - popup appears instantly
+2. Use Quick Pick for fast color selection, or expand accordion sections for more options
+3. Preview your color selection before applying
+4. Click "Apply Color" to theme the current window
+5. Use "Reset to Auto" to return to automatic color assignment
+6. Click "Open in tab" for the full-page color picker with more space
 
 ### Advanced Color Features (v4.x+)
 

@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.4.3** - Released to Firefox AMO (awaiting review)
+**Version 4.5.0** - Popup UI release
 
 ### Completed Phases
 
@@ -10,10 +10,11 @@
 |-------|---------|--------|-------------|
 | 1 | v2.1 | ✅ Done | Performance optimizations (parallel init, O(n) selection) |
 | 2 | v3.0-v4.4 | ✅ Done | Color picker, presets, harmony tools, palette generation |
+| 3 | v4.5.0 | ✅ Done | Popup UI with accordion, Quick Pick, color preview |
 
 ## Future Development
 
-### Phase 3: WebAssembly Enhancement (Optional)
+### Phase 4: WebAssembly Enhancement (Optional)
 
 **Priority**: Low - Current JS implementation is already efficient
 
@@ -34,7 +35,7 @@ WebAssembly would benefit computationally intensive features:
 - Hybrid architecture: JS for WebExtension APIs, WASM for color math
 - Fallback to JS for browsers without WASM support
 
-### Phase 4: System Integration (Future Consideration)
+### Phase 5: System Integration (Future Consideration)
 
 **Priority**: Low - Only if system-level features are needed
 

@@ -13,8 +13,11 @@ Firefox browser extension that dynamically themes browser windows with different
 ```txt
 ├── manifest.json      # WebExtension manifest (v2)
 ├── background.js      # Main extension logic (ThemeManager class)
-├── color-picker.html  # Color picker UI
-├── color-picker.js    # Color picker frontend logic
+├── popup.html         # Popup UI (primary interface)
+├── popup.css          # Popup styles (accordion, preview)
+├── popup.js           # Popup logic (Quick Pick, accordion state)
+├── color-picker.html  # Full-page color picker (optional)
+├── color-picker.js    # Full picker frontend logic
 ├── color-utils.js     # Color science utilities (HSL/RGB, harmony)
 ├── icons/             # Extension icons (48, 96, 128px)
 ├── justfile           # Project management recipes
@@ -43,7 +46,15 @@ Firefox browser extension that dynamically themes browser windows with different
 - `getContrastRatio()`: WCAG contrast calculation
 - `getAccessibleTextColor()`: AA-compliant text color selection
 
-**Color Picker** (`color-picker.js`):
+**Popup UI** (`popup.js`):
+
+- Quick Pick: 12 vibrant colors always visible
+- Accordion sections: Presets (72), Harmony, Palette, Custom
+- Color preview swatch with hex value
+- Accordion state persistence via `localStorage`
+- "Open in tab" link for full picker access
+
+**Full Color Picker** (`color-picker.js`):
 
 - 72 preset colors organized by families
 - Custom hex input with validation
@@ -54,9 +65,10 @@ Firefox browser extension that dynamically themes browser windows with different
 ### Event Flow
 
 1. Window created → `getNextTheme()` → `applyTheme()`
-2. Browser action clicked → Open/focus color picker tab
-3. User selects color → Message to background → `applyTheme(windowId, color)`
-4. Window closed → `freeTheme()` decrements usage counter
+2. Browser action clicked → Popup appears (via `default_popup`)
+3. User selects color → Preview updates → Apply button → Message to background
+4. Background receives message → `applyTheme(windowId, color)`
+5. Window closed → `freeTheme()` decrements usage counter
 
 ## Development
 
@@ -102,7 +114,7 @@ Creates:
 
 | Permission | Purpose |
 | ------------ | --------- |
-| `tabs` | Query/manage tabs for color picker deduplication |
+| `tabs` | Open full color picker tab from popup |
 | `theme` | Apply per-window color themes |
 | `storage` | Persist custom color preferences |
 

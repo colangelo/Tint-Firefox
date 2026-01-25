@@ -2,6 +2,25 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [4.5.0] - 2025-01-25
+
+### Added
+- **Popup UI**: Color picker now opens as instant popup from toolbar (no new tab)
+- **Quick Pick**: 12 vibrant favorite colors always visible at top
+- **Color preview**: Large swatch shows selected color with hex value before applying
+- **Accordion design**: Collapsible sections for presets (72), harmony, palette, and custom color
+- **"Open in tab" link**: Access full-page color picker when more space needed
+
+### Changed
+- Browser action now uses `default_popup` instead of programmatic tab creation
+- Removed `browserAction.onClicked` listener from background.js
+- Accordion state persists across popup opens
+
+### Improved
+- Instant access - popup appears immediately on click
+- Compact 340×580px design optimized for Firefox popup constraints
+- Better UX - see color preview before committing
+
 ## [4.4.3] - 2025-01-24
 
 ### Changed

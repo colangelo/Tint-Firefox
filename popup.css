@@ -264,6 +264,11 @@ details > button {
 
 .color-preview.current {
   background: #fafafa;
+  border-color: #5fb3b3;
+}
+
+.color-preview.selected {
+  border-color: #4CAF50;
 }
 
 .color-preview.empty {
@@ -349,6 +354,15 @@ details > button {
 
 .secondary:hover {
   background: #d0d0d0;
+}
+
+.current-btn {
+  background: #5fb3b3;
+  color: white;
+}
+
+.current-btn:hover {
+  background: #4fa3a3;
 }
 
 /* Quick pick section */

@@ -293,7 +293,7 @@ function setupPaletteGenerator() {
 function setupActionButtons() {
   const applyBtn = document.getElementById('applyBtn');
   const currentBtn = document.getElementById('currentBtn');
-  const autoBtn = document.getElementById('autoBtn');
+  const randomBtn = document.getElementById('randomBtn');
 
   // Apply: apply selected color to window
   applyBtn.addEventListener('click', async () => {
@@ -335,7 +335,7 @@ function setupActionButtons() {
   });
 
   // Auto: randomly assign a new auto color
-  autoBtn.addEventListener('click', async () => {
+  randomBtn.addEventListener('click', async () => {
     // Remove custom color from storage
     await browser.storage.local.remove(`window_${currentWindowId}`);
 
@@ -351,9 +351,9 @@ function setupActionButtons() {
     updateCurrentPreview(currentWindowColor);
 
     // Visual feedback
-    autoBtn.textContent = 'Done!';
+    randomBtn.textContent = 'Done!';
     setTimeout(() => {
-      autoBtn.textContent = 'Auto';
+      randomBtn.textContent = 'Random';
     }, 800);
   });
 }

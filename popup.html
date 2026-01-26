@@ -49,13 +49,6 @@
   <div class="popup-footer">
     <!-- Color Previews -->
     <div class="preview-row">
-      <div class="color-preview" id="colorPreview">
-        <div class="preview-swatch" id="previewSwatch"></div>
-        <div class="preview-info">
-          <span class="preview-label">Selected:</span>
-          <span class="preview-hex" id="previewHex">None</span>
-        </div>
-      </div>
       <div class="color-preview current" id="currentPreview">
         <div class="preview-swatch" id="currentSwatch"></div>
         <div class="preview-info">
@@ -63,13 +56,20 @@
           <span class="preview-hex" id="currentHex">-</span>
         </div>
       </div>
+      <div class="color-preview selected" id="colorPreview">
+        <div class="preview-swatch" id="previewSwatch"></div>
+        <div class="preview-info">
+          <span class="preview-label">Selected:</span>
+          <span class="preview-hex" id="previewHex">None</span>
+        </div>
+      </div>
     </div>
 
     <!-- Actions -->
     <div class="actions">
+      <button id="currentBtn" class="current-btn">Current</button>
+      <button id="randomBtn" class="secondary">Random</button>
       <button id="applyBtn" class="primary">Apply</button>
-      <button id="currentBtn" class="secondary">Current</button>
-      <button id="autoBtn" class="secondary">Auto</button>
     </div>
 
     <div class="footer">

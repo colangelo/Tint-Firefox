@@ -48,6 +48,13 @@ async function initialize() {
   const windows = await browser.windows.getCurrent();
   currentWindowId = windows.id;
 
+  // Fetch current window color from background
+  const currentColor = await browser.runtime.sendMessage({
+    action: 'getWindowColor',
+    windowId: currentWindowId
+  });
+  updateCurrentPreview(currentColor?.color);
+
   // Load saved custom color if exists
   const saved = await browser.storage.local.get(`window_${currentWindowId}`);
   if (saved[`window_${currentWindowId}`]) {
@@ -157,6 +164,22 @@ function updatePreview(color) {
     swatch.classList.remove('has-color');
     hex.textContent = 'None';
     preview.classList.add('empty');
+  }
+}
+
+// Update the current color preview swatch
+function updateCurrentPreview(color) {
+  const swatch = document.getElementById('currentSwatch');
+  const hex = document.getElementById('currentHex');
+
+  if (color) {
+    swatch.style.setProperty('--preview-color', color);
+    swatch.classList.add('has-color');
+    hex.textContent = color.toUpperCase();
+  } else {
+    swatch.style.removeProperty('--preview-color');
+    swatch.classList.remove('has-color');
+    hex.textContent = '-';
   }
 }
 
@@ -282,6 +305,9 @@ function setupActionButtons() {
         color: normalizedColor
       });
 
+      // Update current preview
+      updateCurrentPreview(normalizedColor);
+
       // Visual feedback
       applyBtn.textContent = 'Applied!';
       setTimeout(() => {
@@ -295,10 +321,17 @@ function setupActionButtons() {
     await browser.storage.local.remove(`window_${currentWindowId}`);
 
     // Send message to background script
-    browser.runtime.sendMessage({
+    await browser.runtime.sendMessage({
       action: 'resetWindowColor',
       windowId: currentWindowId
     });
+
+    // Fetch new auto-assigned color
+    const currentColor = await browser.runtime.sendMessage({
+      action: 'getWindowColor',
+      windowId: currentWindowId
+    });
+    updateCurrentPreview(currentColor?.color);
 
     // Reset UI
     selectedColor = null;

@@ -3,8 +3,8 @@
 // Quick Pick: 12 vibrant, distinct colors for always-visible selection
 const QUICK_COLORS = [
   '#ec5f67', '#f99157', '#fac863', '#99c794',  // red, orange, yellow, green
-  '#5fb3b3', '#6699cc', '#c594c5', '#ff4757',  // cyan, blue, purple, pink
-  '#32ff7e', '#70a1ff', '#feca57', '#a55eea'   // lime, sky, gold, violet
+  '#5fb3b3', '#6699cc', '#c594c5',             // cyan, blue, purple
+  '#9b59b6', '#3498db', '#27ae60', '#f1c40f', '#e74c3c'  // purple, blue, green, yellow, red (reverse)
 ];
 
 // Full 72 preset colors

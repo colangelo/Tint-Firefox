@@ -19,8 +19,6 @@ zip -r "$XPI_NAME" \
   popup.html \
   popup.css \
   popup.js \
-  color-picker.html \
-  color-picker.js \
   color-utils.js \
   icons/ \
   -x "*.DS_Store"
@@ -32,8 +30,6 @@ zip -r "$SRC_NAME" \
   popup.html \
   popup.css \
   popup.js \
-  color-picker.html \
-  color-picker.js \
   color-utils.js \
   icons/ \
   README.md \

@@ -364,7 +364,7 @@ function setupOpenFullLink() {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     browser.tabs.create({
-      url: browser.runtime.getURL('color-picker.html'),
+      url: browser.runtime.getURL('popup.html'),
       windowId: currentWindowId
     });
     window.close();

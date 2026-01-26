@@ -40,8 +40,6 @@
     "popup.html",
     "popup.css",
     "popup.js",
-    "color-picker.html",
-    "color-picker.js",
     "color-utils.js"
   ]
 }

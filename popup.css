@@ -399,3 +399,17 @@ details > button {
   text-decoration: underline;
 }
 
+/* When opened as full page (not popup), allow natural sizing */
+@media (min-width: 400px) {
+  body {
+    max-width: 400px;
+    margin: 20px auto;
+    height: auto;
+    max-height: none;
+  }
+
+  .popup-content {
+    overflow-y: visible;
+  }
+}
+

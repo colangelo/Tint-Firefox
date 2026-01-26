@@ -73,6 +73,9 @@ class ThemeManager {
                 toolbar: color,
                 toolbar_text: textColor
                 // Removed toolbar_field properties to keep address bar default
+            },
+            properties: {
+                color_scheme: "system"  // Keep popup following system dark/light preference
             }
         });
     }

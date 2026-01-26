@@ -78,6 +78,9 @@ class ThemeManager {
                 color_scheme: "system"  // Keep popup following system dark/light preference
             }
         });
+
+        // Persist color for this window across restarts
+        await browser.sessions.setWindowValue(windowId, 'tintColor', color);
     }
 
     freeTheme(windowId) {
@@ -125,8 +128,9 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
     if (message.action === 'setWindowColor') {
         await themeManager.applyTheme(message.windowId, message.color);
     } else if (message.action === 'resetWindowColor') {
-        // Clear any custom color first
+        // Clear any custom color and persisted color
         themeManager.customColors.delete(message.windowId);
+        await browser.sessions.removeWindowValue(message.windowId, 'tintColor');
         await themeManager.applyTheme(message.windowId);
         // Return the newly assigned color
         const theme = themeManager.windowThemes.get(message.windowId);
@@ -159,9 +163,17 @@ browser.windows.onRemoved.addListener(windowId => {
 // Startup handlers
 async function initializeAllWindows() {
     const windows = await browser.windows.getAll();
-    await Promise.all(windows.map(window => 
-        themeManager.applyTheme(window.id)
-    ));
+    await Promise.all(windows.map(async (window) => {
+        // Check for persisted color from previous session
+        const savedColor = await browser.sessions.getWindowValue(window.id, 'tintColor');
+        if (savedColor) {
+            // Restore the saved color
+            await themeManager.applyTheme(window.id, savedColor);
+        } else {
+            // Assign new color
+            await themeManager.applyTheme(window.id);
+        }
+    }));
 }
 
 browser.runtime.onStartup.addListener(initializeAllWindows);

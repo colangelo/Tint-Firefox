@@ -2,6 +2,11 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [5.0.2] - 2026-01-26
+
+### Changed
+- **Current button icon**: Larger U-shaped arrow showing copy direction from Current (left) to Selected (right)
+
 ## [5.0.1] - 2026-01-26
 
 ### Changed

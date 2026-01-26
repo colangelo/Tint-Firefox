@@ -336,12 +336,21 @@ function setupActionButtons() {
     if (currentColor?.color) {
       selectColor(currentColor.color, false);
 
-      // Visual feedback - save SVG and show "Done!"
-      const originalContent = currentBtn.innerHTML;
-      currentBtn.textContent = 'Done!';
-      setTimeout(() => {
-        currentBtn.innerHTML = originalContent;
-      }, 800);
+      // Visual feedback - hide SVG and show "Done!"
+      const svg = currentBtn.querySelector('svg');
+      if (svg) {
+        svg.style.display = 'none';
+        currentBtn.appendChild(document.createTextNode('Done!'));
+        setTimeout(() => {
+          svg.style.display = '';
+          // Remove the text node
+          currentBtn.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.remove();
+            }
+          });
+        }, 800);
+      }
     }
   });
 

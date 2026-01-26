@@ -335,6 +335,13 @@ function setupActionButtons() {
     });
     if (currentColor?.color) {
       selectColor(currentColor.color, false);
+
+      // Visual feedback - save SVG and show "Done!"
+      const originalContent = currentBtn.innerHTML;
+      currentBtn.textContent = 'Done!';
+      setTimeout(() => {
+        currentBtn.innerHTML = originalContent;
+      }, 800);
     }
   });
 

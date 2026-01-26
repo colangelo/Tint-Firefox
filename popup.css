@@ -389,6 +389,7 @@ details > button {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.15s ease;
+  min-height: 40px;
 }
 
 .primary {

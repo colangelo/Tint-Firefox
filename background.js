@@ -132,11 +132,13 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
         if (custom) {
             return { color: custom.color, isCustom: true };
         }
-        const theme = themeManager.windowThemes.get(message.windowId);
-        if (theme) {
-            return { color: theme.color, isCustom: false };
+        let theme = themeManager.windowThemes.get(message.windowId);
+        if (!theme) {
+            // Window not initialized yet, apply theme now
+            await themeManager.applyTheme(message.windowId);
+            theme = themeManager.windowThemes.get(message.windowId);
         }
-        return { color: null, isCustom: false };
+        return { color: theme?.color, isCustom: false };
     }
 });
 

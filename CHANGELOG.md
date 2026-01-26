@@ -2,6 +2,17 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [4.8.0] - 2026-01-26
+
+### Added
+- **Dark mode support**: Popup UI automatically follows system dark/light preference
+- CSS custom properties for all UI colors with `prefers-color-scheme` media query
+- Dark theme uses `#1a1a1a` background with appropriate contrast colors
+
+### Fixed
+- Popup color scheme no longer changes when applying light-colored window themes
+- Added `color_scheme: "system"` to theme properties to keep popup following OS preference
+
 ## [4.7.5] - 2026-01-26
 
 ### Changed

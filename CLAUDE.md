@@ -44,9 +44,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `getContrastRatio()`: WCAG contrast calculation
 - `getAccessibleTextColor()`: AA-compliant text color selection
 
-**Popup UI** (`popup.js`):
+**Popup UI** (`popup.js`, `popup.css`):
 
 - Unified interface for both popup and tab views
+- Dark mode: Follows system preference via CSS `prefers-color-scheme`
 - Quick Pick: 12 vibrant colors always visible
 - Accordion sections: Presets (72), Harmony, Palette, Custom
 - Color preview: Current vs Selected comparison

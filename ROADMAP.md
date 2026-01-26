@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.7.5** - Tint (unified UI)
+**Version 4.8.0** - Dark mode support
 
 ### Completed Phases
 
@@ -13,6 +13,7 @@
 | 3 | v4.5.0 | ✅ Done | Popup UI with accordion, Quick Pick, color preview |
 | 4 | v4.7.0 | ✅ Done | Sticky footer, per-window state, current/auto buttons |
 | 5 | v4.7.5 | ✅ Done | Unified popup/tab UI, renamed to "Tint", responsive tab view |
+| 6 | v4.8.0 | ✅ Done | Dark mode support with system preference detection |
 
 ## Future Development
 

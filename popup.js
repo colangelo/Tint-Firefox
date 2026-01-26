@@ -340,17 +340,15 @@ function setupActionButtons() {
     await browser.storage.local.remove(`window_${currentWindowId}`);
 
     // Send message to background script to assign auto color
-    await browser.runtime.sendMessage({
+    // Returns the newly assigned color
+    const result = await browser.runtime.sendMessage({
       action: 'resetWindowColor',
       windowId: currentWindowId
     });
 
-    // Fetch new auto-assigned color
-    const currentColor = await browser.runtime.sendMessage({
-      action: 'getWindowColor',
-      windowId: currentWindowId
-    });
-    updateCurrentPreview(currentColor?.color);
+    // Update current preview with new color
+    currentWindowColor = result?.color;
+    updateCurrentPreview(currentWindowColor);
 
     // Visual feedback
     autoBtn.textContent = 'Done!';

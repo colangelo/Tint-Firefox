@@ -123,6 +123,9 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
         await themeManager.applyTheme(message.windowId, message.color);
     } else if (message.action === 'resetWindowColor') {
         await themeManager.applyTheme(message.windowId);
+        // Return the newly assigned color
+        const theme = themeManager.windowThemes.get(message.windowId);
+        return { color: theme?.color };
     } else if (message.action === 'getWindowColor') {
         // Return current color for the window
         const custom = themeManager.customColors.get(message.windowId);

@@ -264,11 +264,11 @@ details > button {
 
 .color-preview.current {
   background: #fafafa;
-  border-color: #5fb3b3;
+  border-color: #e08080;
 }
 
 .color-preview.selected {
-  border-color: #4CAF50;
+  border-color: #e08080;
 }
 
 .color-preview.empty {
@@ -357,12 +357,21 @@ details > button {
 }
 
 .current-btn {
-  background: #5fb3b3;
+  background: #e08080;
   color: white;
 }
 
 .current-btn:hover {
-  background: #4fa3a3;
+  background: #d07070;
+}
+
+.random-btn {
+  background: #80a0e0;
+  color: white;
+}
+
+.random-btn:hover {
+  background: #7090d0;
 }
 
 /* Quick pick section */

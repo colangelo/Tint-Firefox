@@ -227,9 +227,9 @@ function generateColorHarmony(type) {
       selectColor(color, false);
       // Highlight this harmony color
       container.querySelectorAll('.harmony-color').forEach(el => {
-        el.style.borderColor = 'transparent';
+        el.classList.remove('selected');
       });
-      colorDiv.style.borderColor = '#333';
+      colorDiv.classList.add('selected');
     });
 
     container.appendChild(colorDiv);
@@ -277,9 +277,9 @@ function setupPaletteGenerator() {
       colorDiv.addEventListener('click', () => {
         selectColor(color, false);
         container.querySelectorAll('.palette-color').forEach(el => {
-          el.style.borderColor = 'transparent';
+          el.classList.remove('selected');
         });
-        colorDiv.style.borderColor = '#333';
+        colorDiv.classList.add('selected');
       });
 
       container.appendChild(colorDiv);

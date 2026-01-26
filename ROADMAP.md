@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.8.0** - Dark mode support
+**Version 4.8.4** - Dark mode + scaled tab view
 
 ### Completed Phases
 
@@ -14,6 +14,7 @@
 | 4 | v4.7.0 | ✅ Done | Sticky footer, per-window state, current/auto buttons |
 | 5 | v4.7.5 | ✅ Done | Unified popup/tab UI, renamed to "Tint", responsive tab view |
 | 6 | v4.8.0 | ✅ Done | Dark mode support with system preference detection |
+| 7 | v4.8.4 | ✅ Done | Tab view scaled 45% larger for better readability |
 
 ## Future Development
 

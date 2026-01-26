@@ -452,10 +452,10 @@ details > button {
   text-decoration: underline;
 }
 
-/* When opened as full page (not popup), allow natural sizing */
+/* When opened as full page (not popup), scale up 25% using zoom */
 @media (min-width: 400px) {
   body {
-    max-width: 400px;
+    zoom: 1.45;
     margin: 20px auto;
     height: auto;
     max-height: none;

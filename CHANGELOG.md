@@ -2,6 +2,11 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [4.8.4] - 2026-01-26
+
+### Improved
+- **Tab view scaling**: Tab view now 45% larger than popup using CSS zoom for better readability
+
 ## [4.8.0] - 2026-01-26
 
 ### Added

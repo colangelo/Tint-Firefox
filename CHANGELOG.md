@@ -2,6 +2,12 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [5.0.1] - 2026-01-26
+
+### Changed
+- **Current button icon**: Replaced "Current" text with arrow-right icon for cleaner UI
+- Added tooltip "Copy current color to selected" on hover
+
 ## [5.0.0] - 2026-01-26
 
 ### Added

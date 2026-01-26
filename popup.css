@@ -412,6 +412,9 @@ details > button {
 .current-btn {
   background: #e08080;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .current-btn:hover {

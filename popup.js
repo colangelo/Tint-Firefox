@@ -328,6 +328,7 @@ function setupActionButtons() {
   });
 
   // Current: copy current window color to selected
+  const currentBtnSvg = currentBtn.querySelector('svg');
   currentBtn.addEventListener('click', async () => {
     const currentColor = await browser.runtime.sendMessage({
       action: 'getWindowColor',
@@ -336,19 +337,13 @@ function setupActionButtons() {
     if (currentColor?.color) {
       selectColor(currentColor.color, false);
 
-      // Visual feedback - hide SVG and show "Done!"
-      const svg = currentBtn.querySelector('svg');
-      if (svg) {
-        svg.style.display = 'none';
-        currentBtn.appendChild(document.createTextNode('Done!'));
+      // Visual feedback - remove SVG and show "Done!"
+      if (currentBtnSvg) {
+        currentBtnSvg.remove();
+        currentBtn.textContent = 'Done!';
         setTimeout(() => {
-          svg.style.display = '';
-          // Remove the text node
-          currentBtn.childNodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE) {
-              node.remove();
-            }
-          });
+          currentBtn.textContent = '';
+          currentBtn.appendChild(currentBtnSvg);
         }, 800);
       }
     }

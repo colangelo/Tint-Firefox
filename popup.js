@@ -72,7 +72,7 @@ async function initialize() {
   setupPaletteGenerator();
   setupActionButtons();
   setupOpenFullLink();
-  restoreAccordionState();
+  await restoreAccordionState();
   setupAccordionPersistence();
 }
 
@@ -195,6 +195,9 @@ function setupHarmonyButtons() {
       // Update active state
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      // Save state with new harmony type
+      savePopupState();
     });
   });
 }
@@ -362,23 +365,45 @@ function setupOpenFullLink() {
   });
 }
 
-// Accordion state persistence
-function restoreAccordionState() {
+// Accordion state persistence (per-window)
+async function restoreAccordionState() {
   const accordionIds = ['presetsSection', 'harmonySection', 'paletteSection', 'customSection'];
-  const savedState = localStorage.getItem('accordionState');
+  const stateKey = `popupState_${currentWindowId}`;
+  const saved = await browser.storage.local.get(stateKey);
 
-  if (savedState) {
-    try {
-      const state = JSON.parse(savedState);
-      accordionIds.forEach(id => {
-        const details = document.getElementById(id);
-        if (details && state[id]) {
-          details.open = true;
-        }
-      });
-    } catch (e) {
-      // Ignore parse errors
+  if (saved[stateKey]) {
+    // Restore saved per-window state
+    const state = saved[stateKey];
+    accordionIds.forEach(id => {
+      const details = document.getElementById(id);
+      if (details) {
+        details.open = !!state.accordions?.[id];
+      }
+    });
+    // Restore harmony type if saved
+    if (state.harmonyType) {
+      activateHarmony(state.harmonyType);
     }
+  } else {
+    // First time opening in this window: apply defaults
+    // Only harmony section open, monochromatic selected
+    accordionIds.forEach(id => {
+      const details = document.getElementById(id);
+      if (details) {
+        details.open = (id === 'harmonySection');
+      }
+    });
+    activateHarmony('monochromatic');
+  }
+}
+
+// Activate a harmony type (select button and generate colors)
+function activateHarmony(type) {
+  const btn = document.querySelector(`.harmony-buttons button[data-type="${type}"]`);
+  if (btn) {
+    document.querySelectorAll('.harmony-buttons button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    generateColorHarmony(type);
   }
 }
 
@@ -389,24 +414,30 @@ function setupAccordionPersistence() {
     const details = document.getElementById(id);
     if (details) {
       details.addEventListener('toggle', () => {
-        saveAccordionState();
+        savePopupState();
       });
     }
   });
 }
 
-function saveAccordionState() {
+async function savePopupState() {
   const accordionIds = ['presetsSection', 'harmonySection', 'paletteSection', 'customSection'];
-  const state = {};
+  const accordions = {};
 
   accordionIds.forEach(id => {
     const details = document.getElementById(id);
     if (details) {
-      state[id] = details.open;
+      accordions[id] = details.open;
     }
   });
 
-  localStorage.setItem('accordionState', JSON.stringify(state));
+  const stateKey = `popupState_${currentWindowId}`;
+  await browser.storage.local.set({
+    [stateKey]: {
+      accordions,
+      harmonyType: currentHarmonyType
+    }
+  });
 }
 
 // Initialize when DOM is ready

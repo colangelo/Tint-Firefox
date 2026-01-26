@@ -2,6 +2,54 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [4.7.5] - 2026-01-26
+
+### Changed
+- **Renamed to "Tint"**: Extension title now shows "Tint (vX.X.X)" with dynamic version
+- **Unified UI**: Popup and tab views now share the same codebase (removed color-picker.html/js)
+- **Button order**: Swapped Random and Current button positions
+
+### Improved
+- **Tab view experience**: "Open in tab" link hidden when already in tab view
+- **Auto-expand sections**: All accordion sections expand automatically in tab view
+- **Responsive design**: Centered layout (400px max) for full-page tab view
+
+### Removed
+- Removed standalone color-picker.html and color-picker.js (functionality merged into popup)
+
+## [4.7.4] - 2026-01-26
+
+### Changed
+- **New extension icon**: Updated icon design
+- **Button order**: Swapped Random and Current button positions
+
+## [4.7.3] - 2026-01-26
+
+### Changed
+- **Renamed to "Tint"**: Popup title now shows "Tint (vX.X.X)" with dynamic version from manifest
+- **Unified UI**: Popup and tab views share the same codebase
+- **Browser action tooltip**: Updated to "Tint - Window Color"
+
+### Removed
+- Removed color-picker.html and color-picker.js (merged into popup)
+
+## [4.7.2] - 2026-01-26
+
+### Changed
+- **Quick Pick reorder**: Traditional green/red color arrangement
+
+### Fixed
+- Clear customColors map when resetting to auto
+- Ensure current color is available when popup opens
+
+## [4.7.1] - 2026-01-26
+
+### Changed
+- **New icons**: Updated extension icon design
+- **Footer redesign**: Reorganized popup footer with color-coded styling
+- **Button colors**: Updated button and preview color scheme
+- **Preview border**: Selected preview border matches Apply button green
+
 ## [4.7.0] - 2025-01-26
 
 ### Added

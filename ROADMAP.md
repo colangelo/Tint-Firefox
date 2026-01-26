@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.7.0** - Enhanced popup UX
+**Version 4.7.5** - Tint (unified UI)
 
 ### Completed Phases
 
@@ -12,6 +12,7 @@
 | 2 | v3.0-v4.4 | ✅ Done | Color picker, presets, harmony tools, palette generation |
 | 3 | v4.5.0 | ✅ Done | Popup UI with accordion, Quick Pick, color preview |
 | 4 | v4.7.0 | ✅ Done | Sticky footer, per-window state, current/auto buttons |
+| 5 | v4.7.5 | ✅ Done | Unified popup/tab UI, renamed to "Tint", responsive tab view |
 
 ## Future Development
 

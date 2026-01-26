@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Firefox browser extension that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes.
+**Tint** - Firefox browser extension that dynamically themes browser windows with different colors. Each new window gets assigned a unique color theme to help differentiate between windows or for aesthetic purposes.
 
 **Fork of**: [Colorful Windows](https://github.com/DaveDuck321/Colorful-window-theme) by DaveDuck321
 
@@ -13,11 +13,9 @@ Firefox browser extension that dynamically themes browser windows with different
 ```txt
 ├── manifest.json      # WebExtension manifest (v2)
 ├── background.js      # Main extension logic (ThemeManager class)
-├── popup.html         # Popup UI (primary interface)
-├── popup.css          # Popup styles (accordion, preview)
-├── popup.js           # Popup logic (Quick Pick, accordion state)
-├── color-picker.html  # Full-page color picker (optional)
-├── color-picker.js    # Full picker frontend logic
+├── popup.html         # Unified UI (popup and tab view)
+├── popup.css          # Styles (responsive for popup/tab)
+├── popup.js           # UI logic (Quick Pick, accordion, harmony)
 ├── color-utils.js     # Color science utilities (HSL/RGB, harmony)
 ├── icons/             # Extension icons (48, 96, 128px)
 ├── justfile           # Project management recipes
@@ -48,19 +46,12 @@ Firefox browser extension that dynamically themes browser windows with different
 
 **Popup UI** (`popup.js`):
 
+- Unified interface for both popup and tab views
 - Quick Pick: 12 vibrant colors always visible
 - Accordion sections: Presets (72), Harmony, Palette, Custom
-- Color preview swatch with hex value
-- Accordion state persistence via `localStorage`
-- "Open in tab" link for full picker access
-
-**Full Color Picker** (`color-picker.js`):
-
-- 72 preset colors organized by families
-- Custom hex input with validation
-- Harmony generation buttons
-- Palette generation
-- Per-window persistence via `storage.local`
+- Color preview: Current vs Selected comparison
+- Per-window state persistence via `storage.local`
+- Responsive: popup (356px) vs tab (400px centered, auto-expand)
 
 ### Event Flow
 

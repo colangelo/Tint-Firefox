@@ -46,6 +46,10 @@ function normalizeHex(hex) {
 
 // Initialize popup
 async function initialize() {
+  // Set title with version from manifest
+  const manifest = browser.runtime.getManifest();
+  document.getElementById('popupTitle').textContent = `Tint (v${manifest.version})`;
+
   const windows = await browser.windows.getCurrent();
   currentWindowId = windows.id;
 

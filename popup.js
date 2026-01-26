@@ -378,6 +378,24 @@ function setupOpenFullLink() {
 // Accordion state persistence (per-window)
 async function restoreAccordionState() {
   const accordionIds = ['presetsSection', 'harmonySection', 'paletteSection', 'customSection'];
+  const isTabView = window.innerWidth >= 400;
+
+  // In tab view, expand all sections
+  if (isTabView) {
+    accordionIds.forEach(id => {
+      const details = document.getElementById(id);
+      if (details) {
+        details.open = true;
+      }
+    });
+    if (currentWindowColor) {
+      selectedColor = currentWindowColor;
+      updatePreview(selectedColor);
+    }
+    activateHarmony('monochromatic');
+    return;
+  }
+
   const stateKey = `popupState_${currentWindowId}`;
   const saved = await browser.storage.local.get(stateKey);
 

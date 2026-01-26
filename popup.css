@@ -411,5 +411,9 @@ details > button {
   .popup-content {
     overflow-y: visible;
   }
+
+  .footer {
+    display: none;
+  }
 }
 

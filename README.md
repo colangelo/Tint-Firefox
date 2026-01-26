@@ -56,6 +56,15 @@ Each new window opens with a different theme (much colorfulness).
 - **Pastel color integration**: Added beautiful pastel variants alongside vibrant colors
 - **Improved color harmony**: Colors selected to work well together across the spectrum
 
+### New in v4.7: Enhanced Popup UX
+
+- **Sticky footer**: Preview and buttons stay visible while scrolling color options
+- **Current vs Selected**: Side-by-side comparison of current window color and selection
+- **Smart defaults**: Opens with Color Harmony expanded, Monochromatic selected using current window color
+- **Per-window memory**: Accordion and harmony state remembered per window
+- **Current button**: Copy current window color to selection for tweaking
+- **Auto button**: One-click random color assignment
+
 ### New in v4.5: Popup UI
 
 - **Instant popup access**: Click toolbar icon for immediate color picker (no new tab)
@@ -114,14 +123,15 @@ No build process required - edit files directly and reload the extension in `abo
 - Each new window automatically gets a unique color from the 32-color curated palette
 - Colors are distributed evenly to ensure maximum variety and excellent visual differentiation for many windows
 
-### Custom Color Mode (v4.5+)
+### Custom Color Mode (v4.7+)
 
 1. Click the extension toolbar button - popup appears instantly
 2. Use Quick Pick for fast color selection, or expand accordion sections for more options
-3. Preview your color selection before applying
-4. Click "Apply Color" to theme the current window
-5. Use "Reset to Auto" to return to automatic color assignment
-6. Click "Open in tab" for the full-page color picker with more space
+3. Compare "Selected" vs "Current" color previews at the bottom
+4. Click "Apply" to theme the current window with your selection
+5. Click "Current" to copy the window's current color for modification
+6. Click "Auto" for a random automatic color assignment
+7. Click "Open in tab" for the full-page color picker with more space
 
 ### Advanced Color Features (v4.x+)
 

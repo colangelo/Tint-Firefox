@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.5.0** - Popup UI release
+**Version 4.7.0** - Enhanced popup UX
 
 ### Completed Phases
 
@@ -11,6 +11,7 @@
 | 1 | v2.1 | ✅ Done | Performance optimizations (parallel init, O(n) selection) |
 | 2 | v3.0-v4.4 | ✅ Done | Color picker, presets, harmony tools, palette generation |
 | 3 | v4.5.0 | ✅ Done | Popup UI with accordion, Quick Pick, color preview |
+| 4 | v4.7.0 | ✅ Done | Sticky footer, per-window state, current/auto buttons |
 
 ## Future Development
 

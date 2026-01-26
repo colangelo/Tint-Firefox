@@ -2,6 +2,37 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [4.7.0] - 2025-01-26
+
+### Added
+- **Sticky footer**: Color preview and action buttons stay fixed at bottom while content scrolls
+- **Current color preview**: Shows window's current color alongside selected color for easy comparison
+- **Per-window popup state**: Accordion and harmony selections persist per window
+- **Smart defaults**: First popup open shows Color Harmony expanded with Monochromatic selected
+- **Current button**: Copy current window color to selection for modification
+- **Auto button**: Randomly assign a new automatic color to the window
+
+### Changed
+- Harmony button order: Monochromatic, Analogous, Complementary, Triadic
+- Uses current window color as base for initial monochromatic harmony
+- Replaced "Reset to Auto" with separate "Current" and "Auto" buttons
+- Compact button styling for three-button layout
+
+### Improved
+- Better visual feedback when applying colors
+- Immediate current preview update when using Auto
+
+## [4.6.1] - 2025-01-26
+
+### Added
+- **Current color preview**: Shows window's applied color alongside selected color in footer
+
+## [4.6.0] - 2025-01-26
+
+### Added
+- **Sticky footer**: Color preview and action buttons stay fixed at bottom while content scrolls
+- Flexbox layout separating scrollable content from fixed footer
+
 ## [4.5.0] - 2025-01-25
 
 ### Added

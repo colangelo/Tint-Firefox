@@ -2,6 +2,11 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [5.0.4] - 2026-01-26
+
+### Fixed
+- **Current button feedback**: Fixed SVG/text replacement during "Done!" feedback
+
 ## [5.0.3] - 2026-01-26
 
 ### Added

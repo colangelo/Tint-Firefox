@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 4.8.4** - Dark mode + scaled tab view
+**Version 5.0.0** - Color persistence across restarts
 
 ### Completed Phases
 
@@ -15,6 +15,7 @@
 | 5 | v4.7.5 | ✅ Done | Unified popup/tab UI, renamed to "Tint", responsive tab view |
 | 6 | v4.8.0 | ✅ Done | Dark mode support with system preference detection |
 | 7 | v4.8.4 | ✅ Done | Tab view scaled 45% larger for better readability |
+| 8 | v5.0.0 | ✅ Done | Color persistence across Firefox restarts |
 
 ## Future Development
 

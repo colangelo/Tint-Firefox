@@ -2,7 +2,12 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
-## [4.8.4] - 2026-01-26
+## [5.0.0] - 2026-01-26
+
+### Added
+- **Color persistence**: Window colors now persist across Firefox restarts and extension reloads
+- Uses `browser.sessions` API to save and restore colors per window
+- New `sessions` permission required
 
 ### Improved
 - **Tab view scaling**: Tab view now 45% larger than popup using CSS zoom for better readability

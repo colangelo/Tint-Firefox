@@ -37,6 +37,7 @@ const PRESET_COLORS = [
 let currentWindowId = null;
 let selectedColor = null;
 let currentHarmonyType = null;
+let currentWindowColor = null;
 
 // Normalize hex color format
 function normalizeHex(hex) {
@@ -49,11 +50,12 @@ async function initialize() {
   currentWindowId = windows.id;
 
   // Fetch current window color from background
-  const currentColor = await browser.runtime.sendMessage({
+  const currentColorResult = await browser.runtime.sendMessage({
     action: 'getWindowColor',
     windowId: currentWindowId
   });
-  updateCurrentPreview(currentColor?.color);
+  currentWindowColor = currentColorResult?.color;
+  updateCurrentPreview(currentWindowColor);
 
   // Load saved custom color if exists
   const saved = await browser.storage.local.get(`window_${currentWindowId}`);
@@ -287,11 +289,13 @@ function setupPaletteGenerator() {
   });
 }
 
-// Setup apply and reset buttons
+// Setup action buttons
 function setupActionButtons() {
   const applyBtn = document.getElementById('applyBtn');
-  const resetBtn = document.getElementById('resetBtn');
+  const currentBtn = document.getElementById('currentBtn');
+  const autoBtn = document.getElementById('autoBtn');
 
+  // Apply: apply selected color to window
   applyBtn.addEventListener('click', async () => {
     if (selectedColor) {
       const normalizedColor = normalizeHex(selectedColor);
@@ -312,18 +316,30 @@ function setupActionButtons() {
       updateCurrentPreview(normalizedColor);
 
       // Visual feedback
-      applyBtn.textContent = 'Applied!';
+      applyBtn.textContent = 'Done!';
       setTimeout(() => {
-        applyBtn.textContent = 'Apply Color';
+        applyBtn.textContent = 'Apply';
       }, 800);
     }
   });
 
-  resetBtn.addEventListener('click', async () => {
-    // Remove from storage
+  // Current: copy current window color to selected
+  currentBtn.addEventListener('click', async () => {
+    const currentColor = await browser.runtime.sendMessage({
+      action: 'getWindowColor',
+      windowId: currentWindowId
+    });
+    if (currentColor?.color) {
+      selectColor(currentColor.color, false);
+    }
+  });
+
+  // Auto: randomly assign a new auto color
+  autoBtn.addEventListener('click', async () => {
+    // Remove custom color from storage
     await browser.storage.local.remove(`window_${currentWindowId}`);
 
-    // Send message to background script
+    // Send message to background script to assign auto color
     await browser.runtime.sendMessage({
       action: 'resetWindowColor',
       windowId: currentWindowId
@@ -336,18 +352,10 @@ function setupActionButtons() {
     });
     updateCurrentPreview(currentColor?.color);
 
-    // Reset UI
-    selectedColor = null;
-    document.querySelectorAll('.color-option, .harmony-color, .palette-color').forEach(el => {
-      el.classList.remove('selected');
-      el.style.borderColor = 'transparent';
-    });
-    updatePreview(null);
-
     // Visual feedback
-    resetBtn.textContent = 'Reset!';
+    autoBtn.textContent = 'Done!';
     setTimeout(() => {
-      resetBtn.textContent = 'Reset to Auto';
+      autoBtn.textContent = 'Auto';
     }, 800);
   });
 }
@@ -387,12 +395,17 @@ async function restoreAccordionState() {
   } else {
     // First time opening in this window: apply defaults
     // Only harmony section open, monochromatic selected
+    // Use current window color as base for harmony
     accordionIds.forEach(id => {
       const details = document.getElementById(id);
       if (details) {
         details.open = (id === 'harmonySection');
       }
     });
+    if (currentWindowColor) {
+      selectedColor = currentWindowColor;
+      updatePreview(selectedColor);
+    }
     activateHarmony('monochromatic');
   }
 }

@@ -60,7 +60,8 @@ body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 12px 20px 12px 12px;
+  padding: 12px;
+  scrollbar-gutter: stable;
 }
 
 .popup-footer {

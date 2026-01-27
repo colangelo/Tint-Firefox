@@ -7,31 +7,27 @@ const QUICK_COLORS = [
   '#9b59b6', '#3498db', '#27ae60', '#f1c40f', '#e74c3c'  // purple, blue, green, yellow, red (reverse)
 ];
 
-// Full 72 preset colors
+// Full 60 preset colors (sorted by hue)
 const PRESET_COLORS = [
-  // Reds & Pinks
-  '#ff4757', '#ff3838', '#ff6348', '#ec5f67', '#fb4934', '#e55039',
-  '#ff9ff3', '#f368e0', '#ff6b9d', '#d3869b', '#b16286', '#ff7675',
+  // Row 1: Pinks → Reds
+  '#ff9ff3', '#f368e0', '#e056fd', '#ff6b9d', '#fd79a8', '#c44569',
+  '#ff3838', '#ff4757', '#fb4934', '#ec5f67', '#e55039', '#ff7675',
 
-  // Oranges & Yellows
-  '#ffa502', '#ff9500', '#f99157', '#ff7f50', '#fabd2f', '#ffc048',
-  '#fac863', '#ffdd59', '#f1c40f', '#b8bb26', '#fffa65', '#feca57',
+  // Row 2: Oranges → Yellows
+  '#ff6348', '#ff7f50', '#ffa502', '#ff9500', '#f99157', '#ffc048',
+  '#fabd2f', '#feca57', '#fac863', '#f1c40f', '#ffdd59', '#b8bb26',
 
-  // Greens
-  '#32ff7e', '#18dcff', '#7bed9f', '#99c794', '#689d6a', '#2ed573',
-  '#5f27cd', '#00d2d3', '#ff9ff3', '#83a598', '#26de81', '#20bf6b',
+  // Row 3: Greens → Cyans
+  '#20bf6b', '#27ae60', '#2ed573', '#26de81', '#32ff7e', '#7bed9f',
+  '#99c794', '#689d6a', '#83a598', '#5fb3b3', '#00d2d3', '#0abde3',
 
-  // Blues & Cyans
-  '#70a1ff', '#5352ed', '#6699cc', '#458588', '#3742fa', '#2f3542',
-  '#7bed9f', '#5fb3b3', '#00d2d3', '#0abde3', '#006ba6', '#74b9ff',
+  // Row 4: Blues → Purples
+  '#18dcff', '#74b9ff', '#70a1ff', '#3498db', '#6699cc', '#006ba6',
+  '#3742fa', '#5352ed', '#6c5ce7', '#4834d4', '#5f27cd', '#a55eea',
 
-  // Purples & Magentas
-  '#c594c5', '#a55eea', '#8c7ae6', '#9c88ff', '#e056fd', '#be2edd',
-  '#6c5ce7', '#fd79a8', '#fdcb6e', '#6c5b7b', '#4834d4', '#c44569',
-
-  // Grays & Darks
-  '#57606f', '#2f3640', '#747d8c', '#a4b0be', '#dddddd', '#95a5a6',
-  '#636e72', '#2d3436', '#b2bec3', '#888888', '#555555', '#333333'
+  // Row 5: Lavenders → Mauves → Neutrals
+  '#9c88ff', '#8c7ae6', '#c594c5', '#9b59b6', '#be2edd', '#b16286',
+  '#d3869b', '#6c5b7b', '#a4b0be', '#747d8c', '#555555', '#2d3436',
 ];
 
 let currentWindowId = null;

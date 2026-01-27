@@ -28,7 +28,7 @@ Firefox extension that gives each browser window a unique color theme. Originall
 - **Dark mode**: Automatically follows system dark/light preference
 - **Popup mode**: Compact 356x580px with accordion sections
 - **Tab mode**: Centered 400px layout, all sections expanded
-- **Per-window state**: Accordion and harmony selections remembered
+- **Persistent colors**: Window colors remembered per window, even after restart
 
 
 ## Installation

@@ -2,6 +2,18 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [5.1.0] - 2026-01-27
+
+### Changed
+- **Preset colors reorganized**: Reduced from 72 to 60 curated colors, sorted by hue (rainbow order)
+- **Smarter monochromatic harmony**: Dynamic lightness distribution with duplicate avoidance (5 colors)
+- **Current button icon**: U-shaped arrow showing copy direction from Current to Selected
+- **Current button feedback**: Shows "Done!" briefly on click, matching Apply/Random behavior
+
+### Fixed
+- **Right-edge clipping**: Replaced asymmetric padding hack with `scrollbar-gutter: stable`
+- **Button height stability**: Action buttons maintain consistent height during feedback
+
 ## [5.0.4] - 2026-01-26
 
 ### Fixed

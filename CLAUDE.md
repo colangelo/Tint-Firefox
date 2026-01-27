@@ -49,7 +49,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Unified interface for both popup and tab views
 - Dark mode: Follows system preference via CSS `prefers-color-scheme`
 - Quick Pick: 12 vibrant colors always visible
-- Accordion sections: Presets (72), Harmony, Palette, Custom
+- Accordion sections: Presets (60), Harmony, Palette, Custom
 - Color preview: Current vs Selected comparison
 - Per-window state persistence via `storage.local`
 - Responsive: popup (356px) vs tab (400px centered, auto-expand)

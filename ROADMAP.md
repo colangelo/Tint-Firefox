@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**Version 5.0.0** - Color persistence across restarts
+**Version 5.1.0** - UI polish and color curation
 
 ### Completed Phases
 
@@ -16,6 +16,7 @@
 | 6 | v4.8.0 | ✅ Done | Dark mode support with system preference detection |
 | 7 | v4.8.4 | ✅ Done | Tab view scaled 45% larger for better readability |
 | 8 | v5.0.0 | ✅ Done | Color persistence across Firefox restarts |
+| 9 | v5.1.0 | ✅ Done | UI polish: curated presets, smarter harmony, icon button |
 
 ## Future Development
 

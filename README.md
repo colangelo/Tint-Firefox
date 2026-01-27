@@ -15,7 +15,7 @@ Firefox extension that gives each browser window a unique color theme. Originall
 ### Color Picker
 - **Instant popup**: Click toolbar icon for immediate access
 - **Quick Pick**: 12 vibrant favorites always visible
-- **72 preset colors**: Organized by color families
+- **60 preset colors**: Curated and sorted by hue
 - **Custom hex input**: Choose any color you want
 - **Color preview**: Compare current vs selected before applying
 
@@ -57,7 +57,7 @@ New windows automatically get a unique color from the 32-color palette, distribu
 3. Compare "Selected" vs "Current" color previews
 4. Click **Apply** to theme the window
 5. Click **Random** for a random color
-6. Click **Current** to copy the window's color for tweaking
+6. Click the **arrow button** to copy the window's current color for tweaking
 7. Click **Open in tab** for expanded view
 
 ### Color Harmony

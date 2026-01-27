@@ -109,13 +109,49 @@ class ColorUtils {
                 }
                 break;
                 
-            case 'monochromatic':
-                const lightness = [20, 40, 60, 80];
-                lightness.forEach(l => {
-                    const monoRgb = this.hslToRgb(hsl.h, hsl.s, l);
-                    colors.push(this.rgbToHex(monoRgb.r, monoRgb.g, monoRgb.b));
-                });
+            case 'monochromatic': {
+                const baseL = hsl.l;
+                const baseS = hsl.s;
+                const h = hsl.h;
+                const seen = new Set();
+                seen.add(baseColor.toLowerCase());
+
+                const addColor = (sat, lit) => {
+                    const rgb2 = this.hslToRgb(h, sat, lit);
+                    const hex = this.rgbToHex(rgb2.r, rgb2.g, rgb2.b).toLowerCase();
+                    if (!seen.has(hex)) {
+                        seen.add(hex);
+                        colors.push(this.rgbToHex(rgb2.r, rgb2.g, rgb2.b));
+                    }
+                };
+
+                // Lightness variants at base saturation
+                const minL = 8, maxL = 92, stops = 7;
+                const step = (maxL - minL) / (stops - 1);
+                for (let i = 0; i < stops; i++) {
+                    const l = Math.round(minL + step * i);
+                    if (Math.abs(l - baseL) > 6) addColor(baseS, l);
+                }
+
+                // Saturation variants at base lightness
+                const muted = Math.max(5, baseS - 25);
+                const vivid = Math.min(100, baseS + 15);
+                if (Math.abs(muted - baseS) > 5) addColor(muted, baseL);
+                if (Math.abs(vivid - baseS) > 5) addColor(vivid, baseL);
+
+                // Cross-variants (varied S + L) to fill up to 10
+                const crossPairs = [
+                    [muted, Math.min(92, baseL + 20)],
+                    [vivid, Math.max(8, baseL - 20)],
+                    [muted, Math.max(8, baseL - 15)],
+                    [vivid, Math.min(92, baseL + 15)],
+                ];
+                for (const [s, l] of crossPairs) {
+                    if (colors.length >= 10) break;
+                    addColor(s, l);
+                }
                 break;
+            }
         }
         
         return colors;

@@ -10,7 +10,7 @@ Firefox extension that gives each browser window a unique color theme. Originall
 - **32 curated themes**: Vibrant and pastel colors across the spectrum
 - **Smart distribution**: Least-used color selection ensures variety
 - **Instant theming**: New windows themed automatically
-- **Clean uninstall**: Themes reset when extension is removed
+
 
 ### Color Picker
 - **Instant popup**: Click toolbar icon for immediate access
@@ -29,7 +29,7 @@ Firefox extension that gives each browser window a unique color theme. Originall
 - **Popup mode**: Compact 356x580px with accordion sections
 - **Tab mode**: Centered 400px layout, all sections expanded
 - **Per-window state**: Accordion and harmony selections remembered
-- **Sticky footer**: Preview and buttons stay visible while scrolling
+
 
 ## Installation
 
@@ -43,29 +43,6 @@ Firefox extension that gives each browser window a unique color theme. Originall
 ### Development
 
 No build process required - edit files directly and reload in `about:debugging`.
-
-## Usage
-
-### Automatic Mode (Default)
-
-New windows automatically get a unique color from the 32-color palette, distributed evenly for maximum variety.
-
-### Custom Color Mode
-
-1. Click the toolbar button - popup appears instantly
-2. Use Quick Pick or expand accordion sections for more options
-3. Compare "Selected" vs "Current" color previews
-4. Click **Apply** to theme the window
-5. Click **Random** for a random color
-6. Click the **arrow button** to copy the window's current color for tweaking
-7. Click **Open in tab** for expanded view
-
-### Color Harmony
-
-1. Select a base color
-2. Click harmony buttons to generate color schemes
-3. Click any harmony color to select it
-4. Use "Generate Palette" for a 16-color palette
 
 ## How It Works
 

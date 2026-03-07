@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Colorful Windows Enhanced",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Dynamic colorful firefox windows with custom color picker and expanded color palette.",
   "homepage_url": "https://github.com/casomai/Colorful-Windows-Enhanced",
   "browser_specific_settings": {
@@ -35,7 +35,8 @@
     "tabs",
     "theme",
     "storage",
-    "sessions"
+    "sessions",
+    "idle"
   ],
   "web_accessible_resources": [
     "popup.html",

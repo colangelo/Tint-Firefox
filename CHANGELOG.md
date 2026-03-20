@@ -2,6 +2,12 @@
 
 All notable changes to Colorful Windows Enhanced are documented here.
 
+## [5.1.3] - 2026-03-15
+
+### Added
+- **Sleep/wake theme restoration**: Window themes automatically restore after macOS sleep/wake cycles
+- New `idle` permission to detect system idle state changes
+
 ## [5.1.0] - 2026-01-27
 
 ### Changed

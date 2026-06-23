@@ -3,7 +3,7 @@
   "name": "Tint (formerly Colorful Windows Enhanced)",
   "version": "5.1.3",
   "description": "Dynamic colorful firefox windows with custom color picker and expanded color palette.",
-  "homepage_url": "https://github.com/casomai/Colorful-Windows-Enhanced",
+  "homepage_url": "https://github.com/colangelo/Tint-Firefox",
   "browser_specific_settings": {
     "gecko": {
       "id": "colorful-windows@a-layer.io",

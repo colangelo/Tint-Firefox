@@ -1,0 +1,43 @@
+name: Build & Release
+
+# Tag v* → lint, build the extension package, and publish a GitHub Release with
+# the packaged .zip attached.
+#
+# This does NOT submit to AMO. Submission is a deliberate manual step:
+#   just submit        # web-ext sign --channel listed (creds from 1Password)
+# See the `amo-submit` skill for the full how-to.
+#
+# NOTE: Keep Gitea Actions DISABLED for this repo so the internal mirror doesn't
+# also run this workflow. Push v* tags to the GitHub `origin` remote only.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Lint, build, release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Lint extension
+        run: npx --yes web-ext@latest lint --source-dir .
+
+      - name: Build package
+        run: npx --yes web-ext@latest build --source-dir . --artifacts-dir web-ext-artifacts --overwrite-dest
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: web-ext-artifacts/*.zip
+          generate_release_notes: true

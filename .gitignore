@@ -8,3 +8,8 @@
 # Build artifacts
 *.xpi
 *-source.zip
+web-ext-artifacts/
+
+# Local secrets / notes (never commit)
+.amo.env
+CLAUDE.local.md

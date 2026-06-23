@@ -9,6 +9,22 @@ default:
 package:
     ./package.sh
 
+# Lint the extension with web-ext (same check CI runs)
+lint:
+    npx --yes web-ext@latest lint --source-dir .
+
+# Submit the current source to AMO (listed channel). Creds pulled from 1Password.
+# Reads op:// references from gitignored .amo.env; never writes secrets to disk.
+submit:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    [ -f .amo.env ] || { echo "Missing .amo.env (see CLAUDE.local.md / amo-submit skill)"; exit 1; }
+    source .amo.env
+    echo "Submitting $(just version) to AMO (listed)..."
+    export WEB_EXT_API_KEY="$(op read "$AMO_OP_USERNAME")"
+    export WEB_EXT_API_SECRET="$(op read "$AMO_OP_PASSWORD")"
+    npx --yes web-ext@latest sign --channel listed --source-dir .
+
 # Bump version (usage: just bump 4.4.4)
 bump version:
     @echo "Bumping version to {{version}}..."
@@ -79,6 +95,6 @@ gh-colangelo:
 full-release version: clean (release version)
     @echo ""
     @echo "=== Release Checklist ==="
-    @echo "1. Upload colorful-windows-enhanced-{{version}}.xpi to AMO"
-    @echo "2. Upload colorful-windows-enhanced-{{version}}-source.zip for review"
-    @echo "3. Run: just commit 'v{{version}}' && just push"
+    @echo "1. Commit + push; merge dev -> main"
+    @echo "2. git tag v{{version}} && git push origin v{{version}}   (CI: lint + build + GH Release)"
+    @echo "3. just submit   (web-ext sign --channel listed -> AMO, creds from 1Password)"

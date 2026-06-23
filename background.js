@@ -160,6 +160,56 @@ browser.windows.onRemoved.addListener(windowId => {
     themeManager.freeTheme(windowId);
 });
 
+// Sleep/wake theme restoration — reapply all themes after macOS discards GPU context
+async function reapplyAllThemes() {
+    const windows = await browser.windows.getAll();
+    for (const window of windows) {
+        // Check in-memory custom colors first
+        const custom = themeManager.customColors.get(window.id);
+        if (custom) {
+            await browser.theme.update(window.id, {
+                colors: {
+                    frame: custom.color,
+                    tab_background_text: custom.textColor,
+                    toolbar: custom.color,
+                    toolbar_text: custom.textColor
+                },
+                properties: {
+                    color_scheme: "system"
+                }
+            });
+            await new Promise(r => setTimeout(r, 200));
+            continue;
+        }
+
+        // Check in-memory tracked themes
+        const tracked = themeManager.windowThemes.get(window.id);
+        if (tracked) {
+            const textColor = themeManager.calculateContrastColor(tracked.color);
+            await browser.theme.update(window.id, {
+                colors: {
+                    frame: tracked.color,
+                    tab_background_text: textColor,
+                    toolbar: tracked.color,
+                    toolbar_text: textColor
+                },
+                properties: {
+                    color_scheme: "system"
+                }
+            });
+            await new Promise(r => setTimeout(r, 200));
+            continue;
+        }
+
+        // Fall back to session storage
+        const savedColor = await browser.sessions.getWindowValue(window.id, 'tintColor');
+        if (savedColor) {
+            await themeManager.applyTheme(window.id, savedColor);
+            await new Promise(r => setTimeout(r, 200));
+        }
+    }
+}
+
 // Startup handlers
 async function initializeAllWindows() {
     const windows = await browser.windows.getAll();
@@ -178,3 +228,10 @@ async function initializeAllWindows() {
 
 browser.runtime.onStartup.addListener(initializeAllWindows);
 browser.runtime.onInstalled.addListener(initializeAllWindows);
+
+// Sleep/wake handler — reapply themes after macOS discards GPU context
+browser.idle.onStateChanged.addListener((state) => {
+    if (state === 'active') {
+        setTimeout(reapplyAllThemes, 2000);
+    }
+});

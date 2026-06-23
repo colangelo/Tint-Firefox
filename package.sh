@@ -6,8 +6,8 @@ set -e
 cd "$(dirname "$0")"
 
 VERSION=$(grep '"version"' manifest.json | sed 's/.*: "\(.*\)".*/\1/')
-XPI_NAME="colorful-windows-enhanced-${VERSION}.xpi"
-SRC_NAME="colorful-windows-enhanced-${VERSION}-source.zip"
+XPI_NAME="tint-${VERSION}.xpi"
+SRC_NAME="tint-${VERSION}-source.zip"
 
 # Clean up old packages
 rm -f *.xpi *-source.zip
